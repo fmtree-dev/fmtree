@@ -11,17 +11,14 @@ class Scraper:
     Scrape a given path with given properties such as filters, sort functions..., and turn it into a tree structure
     """
 
-    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False,
-                 compare: Callable = None, keep_empty_dir: bool = False) -> None:
+    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False, keep_empty_dir: bool = False) -> None:
         """
         Initialize Scraper with different properties and addons
         :param path: target path to scrape
         :param filter_: filter for filtering out unwanted files
         :param scrape_now: start scraping right after initialization
-        :param compare: a compare function for sorting each directory
         """
         self._root = path.absolute()
-        self._compare = compare if compare else None
         self._keep_empty_dir = keep_empty_dir
         if not self._root.exists():
             raise ValueError(f"Path Not Exist: {str(self._root)}")
@@ -66,8 +63,6 @@ class Scraper:
             else:
                 pass
             self._history.add(node.get_id())
-        if self._compare:
-            children.sort(key=self._compare)
         return Node(path, children=children, depth=depth, root=self._root), found_any
 
     def add_filter(self, filter_: Filter) -> None:
