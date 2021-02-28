@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import os
 import pathlib2
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import List, Union
 
 

@@ -1,6 +1,6 @@
 from node import Node
 from typing import Callable, Tuple
-from filters import MarkdownFilter
+
 import pathlib2
 
 
@@ -45,11 +45,3 @@ class Scraper:
 
     def get_tree(self):
         return self._tree
-
-
-if __name__ == '__main__':
-    path_ = pathlib2.Path('/Users/huakunshen/Local/Dev/OSCP')
-    scraper = Scraper(path_, scrape_now=False)
-    scraper.add_filter(filter_=MarkdownFilter())
-    scraper.scrape()
-    pass

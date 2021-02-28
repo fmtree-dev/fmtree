@@ -1,21 +1,9 @@
-import os
-import re
-import io
-import sys
 import pathlib2
-import scraper
-
-path = pathlib2.Path('/Users/huakunshen/Local/Dev/OSCP')
-
-
-class Filter:
-    def __init__(self):
-        pass
-
-    def __call__(self, x):
-        print(x)
-
+from scraper import Scraper
+from filter import MarkdownFilter
 
 if __name__ == '__main__':
-    f = Filter()
-    f(1)
+    path_ = pathlib2.Path('/Users/huakunshen/Local/Dev/OSCP')
+    scraper = Scraper(path_, scrape_now=False)
+    scraper.add_filter(filter_=MarkdownFilter())
+    scraper.scrape()
