@@ -51,8 +51,7 @@ class Node(ABC):
     File Node Abstract Class
     """
 
-    def __init__(self, path: pathlib2.Path, depth: int = None, root: pathlib2.Path = None,
-                 children: Union[List, None] = None) -> None:
+    def __init__(self, path: pathlib2.Path, depth: int = None, root: pathlib2.Path = None, children: List = []) -> None:
         """
         Initializer of Node class
         :param path: file path

@@ -12,7 +12,7 @@ class Scraper:
     """
 
     def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False,
-                 compare: Callable = None) -> None:
+                 compare: Callable = None, keep_empty_dir: bool = False) -> None:
         """
         Initialize Scraper with different properties and addons
         :param path: target path to scrape
@@ -22,6 +22,7 @@ class Scraper:
         """
         self._root = path.absolute()
         self._compare = compare if compare else None
+        self._keep_empty_dir = keep_empty_dir
         if not self._root.exists():
             raise ValueError(f"Path Not Exist: {str(self._root)}")
         self._filters = [filter_] if filter_ else []
@@ -53,17 +54,18 @@ class Scraper:
             if sum(map(lambda filter_: filter_(filepath), self._filters)) != len(self._filters):
                 continue
             node = Node(filepath, depth=depth + 1, root=self._root)
-            if filepath.is_symlink() or filepath.is_dir() and node.get_id() not in self._history:
-                self._history.add(node.get_id())
+            if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self._history:
                 subtree, found_any_ = self._scrape(filepath, depth + 1)
                 if found_any_:
+                    found_any = True
+                if self._keep_empty_dir or found_any_:
                     children.append(subtree)
             elif filepath.is_file():
-                self._history.add(node.get_id())
                 children.append(node)
                 found_any = True
             else:
                 pass
+            self._history.add(node.get_id())
         if self._compare:
             children.sort(key=self._compare)
         return Node(path, children=children, depth=depth, root=self._root), found_any

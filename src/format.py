@@ -1,5 +1,7 @@
 import io
 import sys
+from typing import Iterable
+
 import pathlib2
 from abc import ABC, abstractmethod
 from node import Node
@@ -13,8 +15,11 @@ class Formatter(ABC):
         self.stringio = io.StringIO()
 
     @abstractmethod
-    def generate(self):
+    def generate(self) -> io.StringIO:
         raise NotImplementedError
+
+    def get_stringio(self) -> io.StringIO:
+        return self.stringio
 
     def to_file(self, filename: pathlib2):
         with open(str(filename.absolute())) as f:
@@ -28,10 +33,10 @@ class TabFormatter(Formatter):
     def __init__(self, root: Node):
         super(TabFormatter, self).__init__(root)
 
-    def generate(self):
-        def iterate(node_: Node):
+    def generate(self) -> io.StringIO:
+        def iterate(node_: Node) -> None:
             print("\t" * node_.get_depth() + node_.get_filename(), file=self.stringio)
-            if node_.get_children() is not None:
+            if node_.get_children():
                 for node in node_.get_children():
                     iterate(node)
 
@@ -40,16 +45,32 @@ class TabFormatter(Formatter):
 
 
 class TreeCommandFormatter(Formatter):
-    vertical = "\u2502"
-    horizontal = "\u2500"
-    three = "\u251C"
-    two = "\u2514"
+    # prefix components:
+    space = '    '
+    branch = '│   '
+    # pointers:
+    tee = '├── '
+    last = '└── '
 
     def __init__(self, root: Node):
         super(TreeCommandFormatter, self).__init__(root)
 
-    def generate(self):
-        pass
+    def generate(self) -> io.StringIO:
+        def iterate(node_: Node, prefix: str = '') -> Iterable:
+            children = node_.get_children()
+            # contents each get pointers that are ├── with a final └── :
+            pointers = [TreeCommandFormatter.tee] * (len(children) - 1) + [TreeCommandFormatter.last]
+            for pointer, node in zip(pointers, children):
+                yield prefix + pointer + node.get_filename()
+                if children:  # extend the prefix and recurse:
+                    extension = TreeCommandFormatter.branch if pointer == TreeCommandFormatter.tee else TreeCommandFormatter.space
+                    # i.e. space because last, └── , above so no more |
+                    yield from iterate(node, prefix=prefix + extension)
+
+        self.stringio.write(self.root.get_filename() + "\n")
+        for line in iterate(self.root):
+            self.stringio.write(line + "\n")
+        return self.stringio
 
 
 class MarkdownContentFormatter(Formatter):
