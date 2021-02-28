@@ -113,3 +113,9 @@ class Node(ABC):
         :return: UniqueFileIdentifier (id) of this file node
         """
         return self._id
+
+    def get_depth(self):
+        """
+        :return: depth of this file node with respect to root path
+        """
+        return self._depth
