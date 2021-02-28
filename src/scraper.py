@@ -1,11 +1,23 @@
 from node import Node
 from typing import Callable, Tuple
+from filter import Filter
 
 import pathlib2
 
 
 class Scraper:
-    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False):
+    """
+    Scraper of file system
+    Scrape a given path with given properties such as filters, sort functions..., and turn it into a tree structure
+    """
+
+    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False) -> None:
+        """
+        Initialize Scraper with different properties and addons
+        :param path: target path to scrape
+        :param filter_: filter for filtering out unwanted files
+        :param scrape_now: start scraping right after initialization
+        """
         self._root = path.absolute()
         if not self._root.exists():
             raise ValueError(f"Path Not Exist: {str(self._root)}")
@@ -13,11 +25,25 @@ class Scraper:
         self._history = set()
         self._tree = self._scrape(self._root, 0)[0] if scrape_now else None
 
-    def scrape(self) -> Node:
-        self._tree, found_any = self._scrape(self._root, 0)
-        return self._tree
+    def scrape(self, inplace: bool = True) -> Node:
+        """
+        scrape the given path and form a tree structure
+        :param inplace: bool: set tree inplace
+        :return: the scraped tree of file nodes
+        """
+        self._history = set()
+        tree, found_any = self._scrape(self._root, 0)
+        if inplace:
+            self._tree = tree
+        return tree
 
     def _scrape(self, path: pathlib2.Path, depth: int) -> Tuple[Node, bool]:
+        """
+        Use recursion to scrape a given path and return a tree structure
+        :param path: target file path to scrape
+        :param depth: depth of node with respect to the root node
+        :return: the scraped file node tree and whether any target files set by filters were found
+        """
         children = []
         found_any = False
         for filepath in path.iterdir():
@@ -37,11 +63,24 @@ class Scraper:
                 pass
         return Node(path, children=children, depth=depth, root=self._root), found_any
 
-    def add_filter(self, filter_):
+    def add_filter(self, filter_: Filter) -> None:
+        """
+        add an extra filter to the scraper to apply more filtering
+        a file path must satisfy every filter in order to be kept
+        :param filter_: a new filter for filtering
+        :return: None
+        """
         self._filters.append(filter_)
 
-    def clear_filter(self):
+    def clear_filter(self) -> None:
+        """
+        Clear all filters
+        :return: None
+        """
         self._filters = []
 
-    def get_tree(self):
+    def get_tree(self) -> Node:
+        """
+        :return: root node of the scraped file tree
+        """
         return self._tree
