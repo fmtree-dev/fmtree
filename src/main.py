@@ -4,7 +4,8 @@ import pathlib2
 from scraper import Scraper
 from filter import MarkdownFilter
 from node import FileNode
-from format import TabFormatter, TreeCommandFormatter
+from format import TabFormatter, TreeCommandFormatter, ListFileFormatter, MarkdownContentFormatter, \
+    MarkdownLinkContentFormatter, GithubMarkdownContentFormatter
 
 
 def compare(a: FileNode):
@@ -24,11 +25,29 @@ if __name__ == '__main__':
     scraper = Scraper(path_, scrape_now=False, keep_empty_dir=False)
     scraper.add_filter(filter_=MarkdownFilter())
     scraper.run()
-    formatter = TabFormatter(scraper.get_tree())
+    # formatter = TabFormatter(scraper.get_tree())
+    # stringio = formatter.generate()
+    # print(stringio.getvalue())
+    #
+    # formatter = TreeCommandFormatter(scraper.get_tree())
+    # stringio = formatter.generate()
+    # print(stringio.getvalue())
+
+    # formatter = ListFileFormatter(scraper.get_tree())
+    # stringio = formatter.generate()
+    # print(stringio.getvalue())
+    # print(formatter.get_paths())
+
+    # formatter = MarkdownContentFormatter(scraper.get_tree())
+    # stringio = formatter.generate()
+    # print(stringio.getvalue())
+
+    # formatter = MarkdownLinkContentFormatter(scraper.get_tree())
+    # stringio = formatter.generate()
+    # print(stringio.getvalue())
+
+    formatter = GithubMarkdownContentFormatter(scraper.get_tree())
     stringio = formatter.generate()
     print(stringio.getvalue())
-    formatter = TreeCommandFormatter(scraper.get_tree())
-    stringio = formatter.generate()
-    print(stringio.getvalue())
-
-
+    formatter.to_stream(sys.stdout)
+    formatter.to_file("/home/huakun/Desktop/tmp.md", append=True)

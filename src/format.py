@@ -1,5 +1,5 @@
 import io
-from typing import Iterable, List
+from typing import Iterable, List, Union
 from abc import ABC, abstractmethod
 
 import pathlib2
@@ -19,11 +19,13 @@ class BaseFormatter(ABC):
     def get_stringio(self) -> io.StringIO:
         return self.stringio
 
-    def to_file(self, filename: pathlib2, append: bool = False):
-        with open(str(filename.absolute()), "a" if append else "w") as f:
+    def to_file(self, filename: Union[pathlib2.Path, str], append: bool = False) -> None:
+        path = str(filename.absolute()) if isinstance(filename, pathlib2.Path) else filename
+        file_mode = "a" if append else "w"
+        with open(path, file_mode) as f:
             f.write(self.stringio.getvalue())
 
-    def to_stream(self, stream: io.TextIOBase):
+    def to_stream(self, stream: io.TextIOBase) -> None:
         stream.write(self.stringio.getvalue())
 
 
