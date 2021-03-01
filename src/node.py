@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pathlib2
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import List, Union
 
 
@@ -46,7 +46,13 @@ class UniqueFileIdentifier:
         return hash((self.st_dev, self.st_ino))
 
 
-class Node(ABC):
+class BaseNode(ABC):
+    @abstractmethod
+    def __str__(self):
+        raise NotImplementedError
+
+
+class FileNode(BaseNode):
     """
     File Node Abstract Class
     """
@@ -76,7 +82,7 @@ class Node(ABC):
         """
         return str(self._path.absolute())
 
-    def __eq__(self, other: Node) -> bool:
+    def __eq__(self, other: FileNode) -> bool:
         """
         decide whether 2 file nodes are identical
         :param other: Another File Node to compare with
@@ -84,7 +90,7 @@ class Node(ABC):
         """
         return self._id == other.get_id()
 
-    def get_children(self) -> List[Node]:
+    def get_children(self) -> List[FileNode]:
         """
         :return: child file nodes
         """

@@ -3,11 +3,11 @@ import sys
 import pathlib2
 from scraper import Scraper
 from filter import MarkdownFilter
-from node import Node
+from node import FileNode
 from format import TabFormatter, TreeCommandFormatter
 
 
-def compare(a: Node):
+def compare(a: FileNode):
     name = a.get_path().name
     if a.get_depth() == 2 and a.get_path().parent.name == "Exercises":
         if name == "README.md":
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     path_ = pathlib2.Path('/home/huakun/Documents/gdrive/OSCP')
     scraper = Scraper(path_, scrape_now=False, keep_empty_dir=False)
     scraper.add_filter(filter_=MarkdownFilter())
-    scraper.scrape()
+    scraper.run()
     formatter = TabFormatter(scraper.get_tree())
     stringio = formatter.generate()
     print(stringio.getvalue())

@@ -1,16 +1,14 @@
 import io
-import sys
 from typing import Iterable
+from abc import ABC, abstractmethod
 
 import pathlib2
-from abc import ABC, abstractmethod
-from node import Node
-from scraper import Scraper
-from filter import MarkdownFilter
+
+from node import FileNode
 
 
-class Formatter(ABC):
-    def __init__(self, root: Node):
+class BaseFormatter(ABC):
+    def __init__(self, root: FileNode):
         self.root = root
         self.stringio = io.StringIO()
 
@@ -29,12 +27,12 @@ class Formatter(ABC):
         stream.write(self.stringio.getvalue())
 
 
-class TabFormatter(Formatter):
-    def __init__(self, root: Node):
+class TabFormatter(BaseFormatter):
+    def __init__(self, root: FileNode):
         super(TabFormatter, self).__init__(root)
 
     def generate(self) -> io.StringIO:
-        def iterate(node_: Node) -> None:
+        def iterate(node_: FileNode) -> None:
             print("\t" * node_.get_depth() + node_.get_filename(), file=self.stringio)
             if node_.get_children():
                 for node in node_.get_children():
@@ -44,7 +42,7 @@ class TabFormatter(Formatter):
         return self.stringio
 
 
-class TreeCommandFormatter(Formatter):
+class TreeCommandFormatter(BaseFormatter):
     # prefix components:
     space = '    '
     branch = '│   '
@@ -52,11 +50,11 @@ class TreeCommandFormatter(Formatter):
     tee = '├── '
     last = '└── '
 
-    def __init__(self, root: Node):
+    def __init__(self, root: FileNode):
         super(TreeCommandFormatter, self).__init__(root)
 
     def generate(self) -> io.StringIO:
-        def iterate(node_: Node, prefix: str = '') -> Iterable:
+        def iterate(node_: FileNode, prefix: str = '') -> Iterable:
             children = node_.get_children()
             # contents each get pointers that are ├── with a final └── :
             pointers = [TreeCommandFormatter.tee] * (len(children) - 1) + [TreeCommandFormatter.last]
@@ -73,7 +71,7 @@ class TreeCommandFormatter(Formatter):
         return self.stringio
 
 
-class MarkdownContentFormatter(Formatter):
+class MarkdownContentFormatter(BaseFormatter):
     def __init__(self, root, filename=None, stream=None):
         super(MarkdownContentFormatter, self).__init__(root)
         self.filename = filename

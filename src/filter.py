@@ -6,7 +6,7 @@ from typing import List, Union
 import pathlib2
 
 
-class Filter(ABC):
+class BaseFilter(ABC):
     """
     Path filter abstract class
     """
@@ -29,7 +29,7 @@ class Filter(ABC):
         return self.filter(path)
 
 
-class MarkdownFilter(Filter):
+class MarkdownFilter(BaseFilter):
     """
     A filter that keeps only markdown files and intermediate directories (non-files)
     """
@@ -43,7 +43,7 @@ class MarkdownFilter(Filter):
         return path.name.endswith(".md") and path.is_file() if path.is_file() else True
 
 
-class ExtensionFilter(Filter):
+class ExtensionFilter(BaseFilter):
     """
     A filter that only keeps files with given extensions and intermediate directories (non-files)
     """
@@ -65,7 +65,7 @@ class ExtensionFilter(Filter):
             [path.name.endswith(ext) and path.is_file() if path.is_file() else True for ext in self._extensions]) > 0
 
 
-class RegexFilter(Filter):
+class RegexFilter(BaseFilter):
     """
     Filter with Regular Expression
     """
