@@ -11,7 +11,8 @@ class Scraper:
     Scrape a given path with given properties such as filters, sort functions..., and turn it into a tree structure
     """
 
-    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False, keep_empty_dir: bool = False) -> None:
+    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False,
+                 keep_empty_dir: bool = False) -> None:
         """
         Initialize Scraper with different properties and addons
         :param path: target path to scrape

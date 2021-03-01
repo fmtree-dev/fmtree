@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 import re
-from typing import List
+from typing import List, Union
 
 import pathlib2
 
@@ -10,6 +10,31 @@ class Filter(ABC):
     """
     Path filter abstract class
     """
+
+    def __init__(self, root: pathlib2.Path = None,
+                 whitelist: Union[List[Union[str, pathlib2.Path]], None] = None,
+                 blacklist: Union[List[Union[str, pathlib2.Path]], None] = None):
+        """
+        allow and ignore list must be lists of absolute paths
+        if root is specified, then allow and ignore are both relative paths
+        else allow and ignore are absolute paths
+        :param root: root path
+        :param whitelist: List of allowed paths (either absolute or relative paths)
+        :param blacklist: List of ignored paths (either absolute or relative paths)
+        """
+        self.root = root
+        self.whitelist = whitelist if whitelist else []
+        self.blacklist = blacklist if blacklist else []
+        self._update()
+
+    def _update(self):
+        if self.root:
+            self.whitelist = [(self.root / path).resolve().absolute() for path in self.whitelist]
+            self.blacklist = [(self.root / path).resolve().absolute() for path in self.blacklist]
+
+    def set_root(self, root: pathlib2.Path):
+        self.root = root
+        # self.
 
     @abstractmethod
     def __call__(self, path: pathlib2.Path):
