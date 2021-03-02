@@ -50,7 +50,7 @@ OSCP
 ## Sample Code
 
 ```python
-path_ = pathlib2.Path('/Users/huakunshen/Local/Dev/OSCP')
+path_ = pathlib2.Path('/OSCP')
 scraper = Scraper(path_, scrape_now=False, keep_empty_dir=False)
 scraper.add_filter(filter_=MarkdownFilter())
 scraper.run()

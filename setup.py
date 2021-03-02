@@ -4,16 +4,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="FileTree",  # Replace with your own username
-    version="0.0.1",
+    name="filetree",
+    version="0.0.5",
     author="Huakun Shen",
     author_email="huakun.shen@huakunshen.com",
     description="Scrape File System and output different formats",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/HuakunShen/FileTree",
+    url="https://github.com/HuakunShen/filetree",
     project_urls={
-        "Bug Tracker": "https://github.com/HuakunShen/FileTree/issues",
+        "Bug Tracker": "https://github.com/HuakunShen/filetree/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -23,3 +23,6 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
 )
+
+# python -m build
+# python -m twine upload dist/* --verbose --repository testpypi
