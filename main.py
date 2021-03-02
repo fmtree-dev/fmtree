@@ -1,11 +1,12 @@
 import io
 import sys
 import pathlib2
-from scraper import Scraper
-from filter import MarkdownFilter
-from node import FileNode
-from format import TabFormatter, TreeCommandFormatter, ListFileFormatter, MarkdownContentFormatter, \
+from src.scraper import Scraper
+from src.filter import MarkdownFilter
+from src.node import FileNode
+from src.format import TabFormatter, TreeCommandFormatter, ListFileFormatter, MarkdownContentFormatter, \
     MarkdownLinkContentFormatter, GithubMarkdownContentFormatter
+from src.subpkg import test
 
 
 def compare(a: FileNode):
@@ -20,8 +21,8 @@ def compare(a: FileNode):
 
 
 if __name__ == '__main__':
-    # path_ = pathlib2.Path('/Users/huakunshen/Local/Dev/OSCP')
-    path_ = pathlib2.Path('/home/huakun/Documents/gdrive/OSCP')
+    path_ = pathlib2.Path('/Users/huakunshen/Local/Dev/OSCP')
+    # path_ = pathlib2.Path('/home/huakun/Documents/gdrive/OSCP')
     scraper = Scraper(path_, scrape_now=False, keep_empty_dir=False)
     scraper.add_filter(filter_=MarkdownFilter())
     scraper.run()
@@ -50,4 +51,6 @@ if __name__ == '__main__':
     stringio = formatter.generate()
     print(stringio.getvalue())
     formatter.to_stream(sys.stdout)
-    formatter.to_file("/home/huakun/Desktop/tmp.md", append=True)
+    # formatter.to_file("/home/huakun/Desktop/tmp.md", append=True)
+
+    print(test.f())

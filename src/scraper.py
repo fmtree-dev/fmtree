@@ -1,6 +1,6 @@
-from node import FileNode
+from .node import FileNode
 from typing import Callable, Tuple
-from filter import BaseFilter
+from .filter import BaseFilter
 from abc import ABC, abstractmethod
 import pathlib2
 
