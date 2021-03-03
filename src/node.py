@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+import copy
 import pathlib2
 from abc import ABC, abstractmethod
 from typing import List, Union
@@ -51,6 +51,20 @@ class BaseNode(ABC):
     def __str__(self):
         raise NotImplementedError
 
+    def __copy__(self):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        result.__dict__.update(self.__dict__)
+        return result
+
+    def __deepcopy__(self, memo):
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+        for k, v in self.__dict__.items():
+            setattr(result, k, copy.deepcopy(v, memo))
+        return result
+
 
 class FileNode(BaseNode):
     """
@@ -96,6 +110,14 @@ class FileNode(BaseNode):
         """
         return self._children
 
+    def set_children(self, children: List[FileNode]) -> None:
+        """
+        setter
+        :param children: child nodes of a file node
+        :return: NOne
+        """
+        self._children = children
+
     def get_path(self) -> pathlib2.Path:
         """
         :return: file path of this file node
@@ -125,3 +147,9 @@ class FileNode(BaseNode):
         :return: depth of this file node with respect to root path
         """
         return self._depth
+
+    def get_root(self):
+        """
+        :return: node's root path
+        """
+        return self._root
