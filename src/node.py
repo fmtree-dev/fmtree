@@ -1,9 +1,10 @@
 from __future__ import annotations
 import copy
 import stat
+import pickle
 import pathlib2
 from abc import ABC, abstractmethod
-from typing import List, Union
+from typing import List, Union, io
 
 
 class UniqueFileIdentifier:
@@ -65,6 +66,14 @@ class BaseNode(ABC):
         for k, v in self.__dict__.items():
             setattr(result, k, copy.deepcopy(v, memo))
         return result
+
+    @abstractmethod
+    def to_bytes(self) -> bytes:
+        raise NotImplementedError
+
+    @abstractmethod
+    def to_stream(self, stream: io) -> None:
+        raise NotImplementedError
 
 
 class FileNode(BaseNode):
@@ -163,3 +172,9 @@ class FileNode(BaseNode):
 
     def is_file(self):
         return stat.S_ISREG(self._stat.st_mode)
+
+    def to_bytes(self) -> bytes:
+        return pickle.dumps(self)
+
+    def to_stream(self, stream: io) -> None:
+        return pickle.dump(self, stream)

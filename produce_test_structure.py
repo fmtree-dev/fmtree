@@ -67,3 +67,5 @@ if __name__ == '__main__':
     formatter.to_stream(sys.stdout)
 
     # pickle.dump(tree, open(__dir__ / "tests" / "oscp.p", "wb"))
+    tree.to_stream(open(__dir__ / "tests" / "oscp.p", "wb"))
+    print(tree.to_bytes())

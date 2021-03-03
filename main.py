@@ -66,8 +66,9 @@ if __name__ == '__main__':
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
 
-    # use pickle for testing
-    pickle.dump(tree, open(__dir__ / "tests" / "oscp.p", "wb"))
+
+    tree.to_stream(open(__dir__ / "tests" / "oscp.p", "wb"))
+    print(tree.to_bytes())
 
     # formatter = GithubMarkdownContentFormatter(scraper.get_tree())
     # stringio = formatter.generate()
