@@ -1,5 +1,6 @@
 from __future__ import annotations
 import copy
+import stat
 import pathlib2
 from abc import ABC, abstractmethod
 from typing import List, Union
@@ -153,3 +154,12 @@ class FileNode(BaseNode):
         :return: node's root path
         """
         return self._root
+
+    def get_relative_path(self):
+        return self._relative_path
+
+    def is_dir(self):
+        return stat.S_ISDIR(self._stat.st_mode)
+
+    def is_file(self):
+        return stat.S_ISREG(self._stat.st_mode)
