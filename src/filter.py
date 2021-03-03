@@ -1,9 +1,7 @@
 from abc import ABC, abstractmethod
 
 import re
-from typing import List, Union
-
-import pathlib2
+from typing import List, Iterable
 
 
 class BaseFilter(ABC):
@@ -12,21 +10,21 @@ class BaseFilter(ABC):
     """
 
     @abstractmethod
-    def filter(self, path: pathlib2.Path) -> bool:
+    def filter(self, items: Iterable) -> Iterable:
         """
         taking a path and decide whether it agrees with the filter
-        :param path: pathlib2.Path: file path
-        :return: bool: whether agree with the filter
+        :param items: items to be filtered
+        :return: Iterable: result after filtering
         """
         raise NotImplementedError
 
-    def __call__(self, path: pathlib2.Path) -> bool:
+    def __call__(self, items: Iterable) -> Iterable:
         """
         taking a path and decide whether it agrees with the filter
-        :param path: pathlib2.Path: file path
-        :return: bool: whether agree with the filter
+        :param path: items to be filtered
+        :return: Iterable: result after filtering, only markdown and directory are kept
         """
-        return self.filter(path)
+        return self.filter(items)
 
 
 class MarkdownFilter(BaseFilter):
@@ -34,13 +32,9 @@ class MarkdownFilter(BaseFilter):
     A filter that keeps only markdown files and intermediate directories (non-files)
     """
 
-    def filter(self, path: pathlib2.Path) -> bool:
-        """
-        Take a path and decide whether it's a markdown file
-        :param path: pathlib2.Path: file path
-        :return: bool: true if path is a markdown file or a directory/link, false otherwise
-        """
-        return path.name.endswith(".md") and path.is_file() if path.is_file() else True
+    def filter(self, items: Iterable) -> Iterable:
+        return list(
+            filter(lambda path: path.name.endswith(".md") and path.is_file() if path.is_file() else True, items))
 
 
 class ExtensionFilter(BaseFilter):
@@ -55,14 +49,15 @@ class ExtensionFilter(BaseFilter):
         """
         self._extensions = extensions
 
-    def filter(self, path: pathlib2.Path) -> bool:
+    def filter(self, items: Iterable) -> Iterable:
         """
         Decide if the given path has one of the allowed extensions (self._extensions)
-        :param path: a pathlib2.Path file path
-        :return: true if the given path has one of the allowed extensions, false otherwise
+        :param items: Iterable, files to be filtered
+        :return: filtered files with either directory or allowed extensions
         """
-        return sum(
-            [path.name.endswith(ext) and path.is_file() if path.is_file() else True for ext in self._extensions]) > 0
+        return list(
+            filter(lambda filepath: sum(
+                map(lambda ext: filepath.name.endswith(ext) or filepath.is_dir(), self._extensions)) > 0, items))
 
 
 class RegexFilter(BaseFilter):
@@ -70,26 +65,31 @@ class RegexFilter(BaseFilter):
     Filter with Regular Expression
     """
 
-    def __init__(self, regex_pattern: str):
+    def __init__(self, regex_patterns: List) -> None:
         """
         Initialize a Regular Expression Filter with a regex pattern
-        :param regex_pattern: regular expression string
+        :param regex_patterns: regular expression list
         """
-        self._pattern = re.compile(regex_pattern)
+        self._patterns = [re.compile(pattern) for pattern in regex_patterns]
 
-    def filter(self, path: pathlib2.Path) -> bool:
+    def filter(self, items: Iterable) -> Iterable:
         """
         Take a path and decide whether it matches the regular expression self._pattern
-        :param path: pathlib2.Path: file path
-        :return: bool: true if path matches regular expression, false otherwise
+        :param items: Iterable, files to be filtered
+        :return: Iterable: filter out file paths that don't match regular expression
         """
-        return self._pattern.match(str(path)) is not None
+
+        return list(
+            filter(lambda filepath: sum(
+                map(lambda pattern: pattern.match(str(filepath)) is not None or filepath.is_dir(), self._patterns)) > 0,
+                   items))
+        # return self._pattern.match(str(path)) is not None
 
 
-def markdown_filter(path: pathlib2.Path) -> bool:
+def markdown_filter(items: Iterable) -> Iterable:
     """
     A function form markdown file filter
-    :param path: a pathlib2.Path path
-    :return: true if path is a markdown file or directory/link, false otherwise
+    :param items: files to be filtered
+    :return: Iterable, filtered files (only markdown and directory are kept)
     """
-    return path.name.endswith(".md") if path.is_file() else True
+    return list(filter(lambda path: path.name.endswith(".md") and path.is_file() if path.is_file() else True, items))

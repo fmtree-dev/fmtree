@@ -1,5 +1,5 @@
 from .node import FileNode
-from typing import Callable, Tuple
+from typing import Callable, Tuple, Union
 from .filter import BaseFilter
 from abc import ABC, abstractmethod
 import pathlib2
@@ -28,7 +28,7 @@ class BaseScraper(ABC):
             self._tree = tree
         return tree
 
-    def add_filter(self, filter_: BaseFilter) -> None:
+    def add_filter(self, filter_: Union[BaseFilter, Callable]) -> None:
         """
         add an extra filter to the scraper to apply more filtering
         a file path must satisfy every filter in order to be kept
@@ -79,9 +79,10 @@ class Scraper(BaseScraper):
         """
         children = []
         found_any = False
-        for filepath in path.iterdir():
-            if sum(map(lambda filter_: filter_(filepath), self._filters)) != len(self._filters):
-                continue
+        paths = list(path.iterdir())
+        for filter_ in self._filters:
+            paths = filter_(paths)
+        for filepath in paths:
             node = FileNode(filepath, depth=depth + 1, root=self._root)
             if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self._history:
                 subtree, found_any_ = self.scrape(filepath, depth + 1)
