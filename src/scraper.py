@@ -10,7 +10,7 @@ class BaseScraper(ABC):
         self._root = path.absolute()
         self._history = set()
         self._tree = self.scrape(self._root, 0)[0] if scrape_now else None
-        self._filters = [filter_] if filter_ else []
+        self._filter = filter_
 
     @abstractmethod
     def scrape(self, path: pathlib2.Path, depth: int) -> Tuple[FileNode, bool]:
@@ -27,22 +27,6 @@ class BaseScraper(ABC):
         if inplace:
             self._tree = tree
         return tree
-
-    def add_filter(self, filter_: Union[BaseFilter, Callable]) -> None:
-        """
-        add an extra filter to the scraper to apply more filtering
-        a file path must satisfy every filter in order to be kept
-        :param filter_: a new filter for filtering
-        :return: None
-        """
-        self._filters.append(filter_)
-
-    def clear_filter(self) -> None:
-        """
-        Clear all filters
-        :return: None
-        """
-        self._filters = []
 
     def get_tree(self) -> FileNode:
         """
@@ -79,9 +63,7 @@ class Scraper(BaseScraper):
         """
         children = []
         found_any = False
-        paths = list(path.iterdir())
-        for filter_ in self._filters:
-            paths = filter_(paths)
+        paths = self._filter(list(path.iterdir()))
         for filepath in paths:
             node = FileNode(filepath, depth=depth + 1, root=self._root)
             if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self._history:
