@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
 
 import re
-from typing import List, Iterable
+from typing import List, Iterable, TypeVar
+
+from fmtree.node import FileNode
+
+T = TypeVar('T')
 
 
 class BaseFilter(ABC):
@@ -49,7 +53,7 @@ class ExtensionFilter(BaseFilter):
         """
         self._extensions = extensions
 
-    def filter(self, items: Iterable) -> Iterable:
+    def filter(self, items: List[T]) -> List[T]:
         """
         Decide if the given path has one of the allowed extensions (self._extensions)
         :param items: Iterable, files to be filtered

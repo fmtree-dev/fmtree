@@ -50,7 +50,7 @@ class OSCPExerciseSorter(sorter.BaseSorter):
 if __name__ == '__main__':
     # reproduce tree
     print("reproduce tree from test data")
-    read_tree = pickle.load(open(__dir__ / "tests" / "oscp.p", "rb"))
+    read_tree = pickle.load(open(__dir__ / "tests" / "test_cases" / "oscp.p", "rb"))
     target_path = __dir__ / "playground"
     utils.reproduce_fs_tree(target_path, read_tree)
 
