@@ -1,6 +1,4 @@
 import pathlib2
-import shutil
-import os
 
 from .node import FileNode
 
