@@ -1,5 +1,10 @@
 # FileTree
 
+## Documentation
+
+https://huakunshen.github.io/fmtree/
+
+
 ## Sample Output
 
 ### GithubMarkdownContentFormatter
