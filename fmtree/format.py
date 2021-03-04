@@ -63,7 +63,8 @@ class TreeCommandFormatter(BaseFormatter):
             for pointer, node in zip(pointers, children):
                 yield prefix + pointer + node.get_filename()
                 if children:  # extend the prefix and recurse:
-                    extension = TreeCommandFormatter.branch if pointer == TreeCommandFormatter.tee else TreeCommandFormatter.space
+                    extension = TreeCommandFormatter.branch if pointer == TreeCommandFormatter.tee else \
+                        TreeCommandFormatter.space
                     # i.e. space because last, └── , above so no more |
                     yield from iterate(node, prefix=prefix + extension)
 

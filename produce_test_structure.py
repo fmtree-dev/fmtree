@@ -1,16 +1,13 @@
-import io
 import pickle
 import re
 import sys
-import stat
 from typing import List, Iterable
 from functools import cmp_to_key
 import pathlib2
 from fmtree.scraper import Scraper
-from fmtree.filter import MarkdownFilter, markdown_filter, ExtensionFilter, RegexFilter
+from fmtree.filter import RegexFilter
 from fmtree.node import FileNode
-from fmtree.format import TabFormatter, TreeCommandFormatter, ListFileFormatter, MarkdownContentFormatter, \
-    MarkdownLinkContentFormatter, GithubMarkdownContentFormatter
+from fmtree.format import TreeCommandFormatter
 from fmtree import sorter
 from fmtree import utils
 
@@ -18,7 +15,7 @@ __dir__ = pathlib2.Path(__file__).parent.absolute()
 
 
 class OSCPExerciseSorter(sorter.BaseSorter):
-    exercise_re_pattern = re.compile("^(\d+\.)+\d+$")
+    exercise_re_pattern = re.compile("^(\\d+\\.)+\\d+$")
 
     def sorted(self, nodes: List[FileNode]) -> Iterable:
         relative_path = nodes[0].get_path().parent.relative_to(nodes[0].get_root())
@@ -58,7 +55,7 @@ if __name__ == '__main__':
     utils.reproduce_fs_tree(target_path, read_tree)
 
     target_path = target_path / "OSCP"
-    scraper = Scraper(target_path, scrape_now=False, keep_empty_dir=False, filter_=RegexFilter(['.+\.md']))
+    scraper = Scraper(target_path, scrape_now=False, keep_empty_dir=False, filter_=RegexFilter(['.+\\.md']))
     scraper.run()
     sorter_ = OSCPExerciseSorter()
     tree = sorter_(scraper.get_tree())
