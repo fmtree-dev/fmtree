@@ -4,11 +4,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="filetree",
-    version="0.0.5",
+    name="fmtree",
+    version="0.0.1",
     author="Huakun Shen",
     author_email="huakun.shen@huakunshen.com",
-    description="Scrape File System and output different formats",
+    description="Scrape File System and output in different formats",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/HuakunShen/filetree",

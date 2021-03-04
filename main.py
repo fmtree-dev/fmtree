@@ -6,13 +6,13 @@ import stat
 from typing import List, Iterable
 from functools import cmp_to_key
 import pathlib2
-from src.scraper import Scraper
-from src.filter import MarkdownFilter, markdown_filter, ExtensionFilter, RegexFilter
-from src.node import FileNode
-from src.format import TabFormatter, TreeCommandFormatter, ListFileFormatter, MarkdownContentFormatter, \
+from fmtree.scraper import Scraper
+from fmtree.filter import MarkdownFilter, markdown_filter, ExtensionFilter, RegexFilter
+from fmtree.node import FileNode
+from fmtree.format import TabFormatter, TreeCommandFormatter, ListFileFormatter, MarkdownContentFormatter, \
     MarkdownLinkContentFormatter, GithubMarkdownContentFormatter
-from src import sorter
-from src import utils
+from fmtree import sorter
+from fmtree import utils
 
 __dir__ = pathlib2.Path(__file__).parent.absolute()
 
