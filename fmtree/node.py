@@ -1,4 +1,5 @@
 from __future__ import annotations
+import os
 import copy
 import stat
 import pickle
@@ -140,34 +141,34 @@ class FileNode(BaseNode):
         """
         return self._filename
 
-    def get_stat(self):
+    def get_stat(self) -> os.stat_result:
         """
         :return: stat of this file node
         """
         return self._stat
 
-    def get_id(self):
+    def get_id(self) -> UniqueFileIdentifier:
         """
         :return: UniqueFileIdentifier (id) of this file node
         """
         return self._id
 
-    def get_depth(self):
+    def get_depth(self) -> int:
         """
         :return: depth of this file node with respect to root path
         """
         return self._depth
 
-    def get_root(self):
+    def get_root(self) -> FileNode:
         """
         :return: node's root path
         """
         return self._root
 
-    def get_relative_path(self):
+    def get_relative_path(self) -> pathlib2.Path:
         return self._relative_path
 
-    def is_dir(self):
+    def is_dir(self) -> bool:
         return stat.S_ISDIR(self._stat.st_mode)
 
     def is_file(self):
