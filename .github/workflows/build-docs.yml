@@ -32,8 +32,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto Update Documentation
-          branch: gh-pages
-          file_pattern: docs/*
+          branch: master
+          file_pattern: .
           commit_user_name: Huakun Shen
           commit_user_email: huakun.shen@huakunshen.com
           skip_dirty_check: true
@@ -42,7 +42,7 @@ jobs:
         with:
           commit_message: Auto Update Documentation
           branch: gh-pages
-          file_pattern: docs/*
+          file_pattern: .
           commit_user_name: Huakun Shen
           commit_user_email: huakun.shen@huakunshen.com
           push_options: '--force'

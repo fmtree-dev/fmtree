@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Welcome to fmtree’s documentation!" href="../index.html" /> 
+    <link rel="prev" title="Sample Code" href="../docs/sample.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,6 +85,8 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../docs/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/sample.html">Sample Code</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">fmtree package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-fmtree.filter">fmtree.filter module</a></li>
@@ -394,7 +396,7 @@
 
 <dl class="py method">
 <dt id="fmtree.node.FileNode.get_depth">
-<code class="sig-name descname"><span class="pre">get_depth</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.node.FileNode.get_depth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_depth</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#fmtree.node.FileNode.get_depth" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>depth of this file node with respect to root path</p>
@@ -414,7 +416,7 @@
 
 <dl class="py method">
 <dt id="fmtree.node.FileNode.get_id">
-<code class="sig-name descname"><span class="pre">get_id</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.node.FileNode.get_id" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_id</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.node.UniqueFileIdentifier" title="fmtree.node.UniqueFileIdentifier"><span class="pre">fmtree.node.UniqueFileIdentifier</span></a><a class="headerlink" href="#fmtree.node.FileNode.get_id" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>UniqueFileIdentifier (id) of this file node</p>
@@ -434,12 +436,12 @@
 
 <dl class="py method">
 <dt id="fmtree.node.FileNode.get_relative_path">
-<code class="sig-name descname"><span class="pre">get_relative_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.node.FileNode.get_relative_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_relative_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.node.FileNode.get_relative_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="fmtree.node.FileNode.get_root">
-<code class="sig-name descname"><span class="pre">get_root</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.node.FileNode.get_root" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_root</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><a class="headerlink" href="#fmtree.node.FileNode.get_root" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>node’s root path</p>
@@ -449,7 +451,7 @@
 
 <dl class="py method">
 <dt id="fmtree.node.FileNode.get_stat">
-<code class="sig-name descname"><span class="pre">get_stat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.node.FileNode.get_stat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">get_stat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">os.stat_result</span><a class="headerlink" href="#fmtree.node.FileNode.get_stat" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>stat of this file node</p>
@@ -459,7 +461,7 @@
 
 <dl class="py method">
 <dt id="fmtree.node.FileNode.is_dir">
-<code class="sig-name descname"><span class="pre">is_dir</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.node.FileNode.is_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">is_dir</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#fmtree.node.FileNode.is_dir" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -554,15 +556,22 @@ Scrape a given path with given properties such as filters, sort functions…, an
 <dt id="fmtree.sorter.BaseSorter">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.sorter.</span></code><code class="sig-name descname"><span class="pre">BaseSorter</span></code><a class="headerlink" href="#fmtree.sorter.BaseSorter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Sorter Base Class for sorting child nodes</p>
 <dl class="py method">
 <dt id="fmtree.sorter.BaseSorter.run">
 <code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><a class="headerlink" href="#fmtree.sorter.BaseSorter.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Traverse through the tree and run sorting algorithm implemented by child class
+:param root_node: root node
+:return: another tree root node</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="fmtree.sorter.BaseSorter.sorted">
 <em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">sorted</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.sorter.BaseSorter.sorted" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Abstract method for sorting children nodes
+:param nodes: a list of nodes which is children of another node
+:return: a list of sorted nodes</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -573,7 +582,10 @@ Scrape a given path with given properties such as filters, sort functions…, an
 <dl class="py method">
 <dt id="fmtree.sorter.Sorter.sorted">
 <code class="sig-name descname"><span class="pre">sorted</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.sorter.Sorter.sorted" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Abstract method for sorting children nodes
+:param nodes: a list of nodes which is children of another node
+:return: a list of sorted nodes</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -601,7 +613,7 @@ Scrape a given path with given properties such as filters, sort functions…, an
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to fmtree’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../docs/sample.html" class="btn btn-neutral float-left" title="Sample Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
