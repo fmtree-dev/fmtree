@@ -1,9 +1,15 @@
 import pathlib2
 
-from .node import FileNode
+from fmtree.node import FileNode
 
 
-def reproduce_fs_tree(target_dir: pathlib2.Path, root: FileNode):
+def reproduce_fs_tree(target_dir: pathlib2.Path, root: FileNode) -> None:
+    """
+    Given a tree, recreate the tree structure in the file system
+    :param target_dir: directory the structure is going to be reproduced in
+    :param root: tree root node
+    :return: None
+    """
     target_dir.mkdir(parents=True, exist_ok=True)
     if root and root.get_filename():
         target_dir /= root.get_filename()

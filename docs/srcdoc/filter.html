@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>filter module &#8212; fmtree 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-filter">
+<span id="filter-module"></span><h1>filter module<a class="headerlink" href="#module-filter" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="filter.BaseFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">BaseFilter</span></code><a class="headerlink" href="#filter.BaseFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Path filter abstract class</p>
+<dl class="py method">
+<dt id="filter.BaseFilter.filter">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.BaseFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>taking a path and decide whether it agrees with the filter
+:param items: items to be filtered
+:return: Iterable: result after filtering</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="filter.ExtensionFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">ExtensionFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.ExtensionFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<p>A filter that only keeps files with given extensions and intermediate directories (non-files)</p>
+<dl class="py method">
+<dt id="filter.ExtensionFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#filter.ExtensionFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decide if the given path has one of the allowed extensions (self._extensions)
+:param items: Iterable, files to be filtered
+:return: filtered files with either directory or allowed extensions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="filter.MarkdownFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">MarkdownFilter</span></code><a class="headerlink" href="#filter.MarkdownFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<p>A filter that keeps only markdown files and intermediate directories (non-files)</p>
+<dl class="py method">
+<dt id="filter.MarkdownFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.MarkdownFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>taking a path and decide whether it agrees with the filter
+:param items: items to be filtered
+:return: Iterable: result after filtering</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="filter.RegexFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">RegexFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.RegexFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<p>Filter with Regular Expression</p>
+<dl class="py method">
+<dt id="filter.RegexFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.RegexFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a path and decide whether it matches the regular expression self._pattern
+:param items: Iterable, files to be filtered
+:return: Iterable: filter out file paths that don’t match regular expression</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="filter.markdown_filter">
+<code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">markdown_filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.markdown_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function form markdown file filter
+:param items: files to be filtered
+:return: Iterable, filtered files (only markdown and directory are kept)</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">fmtree</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Huakun Shen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/srcdoc/filter.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

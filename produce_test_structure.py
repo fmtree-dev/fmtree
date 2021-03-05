@@ -65,4 +65,3 @@ if __name__ == '__main__':
 
     # pickle.dump(tree, open(path / "tests" / "oscp.p", "wb"))
     tree.to_stream(open(path / "tests" / "oscp.p", "wb"))
-    print(tree.to_bytes())

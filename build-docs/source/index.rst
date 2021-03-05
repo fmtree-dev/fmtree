@@ -1,5 +1,5 @@
 .. fmtree documentation master file, created by
-   sphinx-quickstart on Thu Mar  4 10:49:22 2021.
+   sphinx-quickstart on Fri Mar  5 00:06:23 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -7,10 +7,10 @@ Welcome to fmtree's documentation!
 ==================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
 
-
+   srcdoc/fmtree
 
 Indices and tables
 ==================
