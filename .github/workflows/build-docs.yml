@@ -1,0 +1,44 @@
+name: Build Documentation
+
+on:
+  push:
+    branches:
+      - "master"
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.github-action-token }}
+      - name: Set up Python 3.8
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.8
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
+      - name: Install dependencies
+        run: |
+          conda env update --file environment.yml --name base
+      - name: Build Documentation with Sphinx
+        run: |
+          cd build-docs
+          sphinx-build -b html source ../docs
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto Update Documentation
+          branch: gh-pages
+          file_pattern: docs/*
+          commit_user_name: Huakun Shen
+          commit_user_email: huakun.shen@huakunshen.com
+          push_options: '--force'
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: echo "Documentation Updated"
+      - name: "Run if no changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        run: echo "Documentation Not Updated"
