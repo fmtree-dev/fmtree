@@ -6,8 +6,15 @@ from fmtree.node import FileNode
 
 
 class BaseSorter(ABC):
-
+    """
+    Sorter Base Class for sorting child nodes
+    """
     def run(self, root_node: FileNode) -> FileNode:
+        """
+        Traverse through the tree and run sorting algorithm implemented by child class
+        :param root_node: root node
+        :return: another tree root node
+        """
         tree = copy.deepcopy(root_node)
 
         def traverse(node: FileNode):
@@ -21,6 +28,11 @@ class BaseSorter(ABC):
 
     @abstractmethod
     def sorted(self, nodes: List[FileNode]) -> List[FileNode]:
+        """
+        Abstract method for sorting children nodes
+        :param nodes: a list of nodes which is children of another node
+        :return: a list of sorted nodes
+        """
         raise NotImplementedError
 
     def __call__(self, node: FileNode) -> FileNode:
