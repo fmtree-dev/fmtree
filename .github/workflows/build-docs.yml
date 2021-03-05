@@ -28,7 +28,17 @@ jobs:
         run: |
           cd build-docs
           sphinx-build -b html source ../docs
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: push docs to master
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Auto Update Documentation
+          branch: gh-pages
+          file_pattern: docs/*
+          commit_user_name: Huakun Shen
+          commit_user_email: huakun.shen@huakunshen.com
+          skip_dirty_check: true
+      - name: push docs to gh-pages
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto Update Documentation
           branch: gh-pages
