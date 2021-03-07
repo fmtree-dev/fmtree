@@ -1,9 +1,8 @@
 # FileTree
 
-![example workflow](https://github.com/github/docs/actions/workflows/build-docs.yml/badge.svg)
-![example workflow](https://github.com/github/docs/actions/workflows/python-package.yml/badge.svg)
-![example workflow](https://github.com/github/docs/actions/workflows/python-package-conda.yml/badge.svg)
-![example workflow](https://github.com/github/docs/actions/workflows/python-publish.yml/badge.svg)
+![Build Documentation](https://github.com/HuakunShen/fmtree/actions/workflows/build-docs.yml/badge.svg)
+![Pytest](https://github.com/HuakunShen/fmtree/actions/workflows/python-package.yml/badge.svg)
+![Publish Package](https://github.com/HuakunShen/fmtree/actions/workflows/python-publish.yml/badge.svg)
 
 
 ## Documentation
