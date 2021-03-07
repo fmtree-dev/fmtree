@@ -3,7 +3,7 @@ name: Build Documentation
 on:
   push:
     branches:
-      - "docs"
+      - "gh-pages"
 jobs:
   build-docs:
     runs-on: ubuntu-latest
