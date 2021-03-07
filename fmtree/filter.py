@@ -63,8 +63,7 @@ class BaseFileFilter(BaseFilter):
         :return: items to keep
         :rtype: Iterable
         """
-        # raise NotImplementedError
-        return items
+        raise NotImplementedError
 
     def __call__(self, paths: Iterable[pathlib2.Path]) -> Iterable[pathlib2.Path]:
         """__call__ function to apply filter
@@ -82,6 +81,11 @@ class BaseFileFilter(BaseFilter):
 
         paths = list(filter(lambda path: make_decision(path), paths))
         return self.filter(paths)
+
+
+class IdentityFilter(BaseFileFilter):
+    def filter(self, items: Iterable) -> Iterable:
+        return items
 
 
 class MarkdownFilter(BaseFileFilter):
@@ -144,4 +148,3 @@ class RegexFilter(BaseFileFilter):
             filter(lambda filepath: sum(
                 map(lambda pattern: pattern.match(str(filepath)) is not None or filepath.is_dir(), self._patterns)) > 0,
                    items))
-        # return self._pattern.match(str(path)) is not None
