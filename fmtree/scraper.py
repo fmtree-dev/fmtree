@@ -1,37 +1,61 @@
 from fmtree.node import FileNode
-from typing import Callable, Tuple
+from fmtree.filter import BaseFilter, BaseFileFilter
+from typing import Callable, Tuple, Iterable
 from abc import ABC, abstractmethod
 import pathlib2
 
 
 class BaseScraper(ABC):
-    def __init__(self, path: pathlib2.Path, scrape_now: bool = False, filter_: Callable = None):
-        self._root = path.absolute()
-        self._history = set()
-        self._tree = self.scrape(self._root, 0)[0] if scrape_now else None
-        self._filter = filter_
+    def __init__(self, path: pathlib2.Path, scrape_now: bool = False, filters: Iterable[BaseFileFilter] = None):
+        """Base Scraper Initializer
+
+        :param path: path to scrape
+        :type path: pathlib2.Path
+        :param scrape_now: whether start scraping when the object is created, defaults to False
+        :type scrape_now: bool, optional
+        :param filters: list of filters, defaults to None
+        :type filters: Iterable[BaseFileFilter], optional
+        """
+        self.root = path.resolve().absolute()
+        self.history = set()
+        self.filters = filters if filters else []
+        for filter_ in self.filters:
+            filter_.set_root_path(self.root)
+        self.tree = self.scrape(self.root, 0)[0] if scrape_now else None
 
     @abstractmethod
     def scrape(self, path: pathlib2.Path, depth: int) -> Tuple[FileNode, bool]:
         raise NotImplementedError
 
+    def add_filter(self, filter_: BaseFileFilter) -> None:
+        """Add a filter object to this Scraper
+
+        :param filter_: filter object
+        :type filter_: BaseFileFilter
+        """
+        filter_.set_root_path(self.root)
+        self.filters.append(filter_)
+
     def run(self, inplace: bool = True) -> FileNode:
-        """
-        scrape the given path and form a tree structure
-        :param inplace: bool: set tree inplace
+        """scrape the given path and form a tree structure
+
+        :param inplace: set tree inplace, defaults to True
+        :type inplace: bool, optional
         :return: the scraped tree of file nodes
+        :rtype: FileNode
         """
-        self._history = set()
-        tree, found_any = self.scrape(self._root, 0)
+        self.history = set()
+        tree, found_any = self.scrape(self.root, 0)
         if inplace:
-            self._tree = tree
+            self.tree = tree
         return tree
 
     def get_tree(self) -> FileNode:
         """
         :return: root node of the scraped file tree
+        :rtype: FileNode
         """
-        return self._tree
+        return self.tree
 
 
 class Scraper(BaseScraper):
@@ -40,18 +64,20 @@ class Scraper(BaseScraper):
     Scrape a given path with given properties such as filters, sort functions..., and turn it into a tree structure
     """
 
-    def __init__(self, path: pathlib2.Path, filter_: Callable = None, scrape_now: bool = False,
-                 keep_empty_dir: bool = False) -> None:
+    def __init__(self, path: pathlib2.Path, filters: Iterable[BaseFileFilter] = None, scrape_now: bool = False,
+                 keep_empty_dir: bool = False, depth: int = None) -> None:
         """
         Initialize Scraper with different properties and addons
         :param path: target path to scrape
-        :param filter_: filter for filtering out unwanted files
+        :param filters: filters for filtering out unwanted files
         :param scrape_now: start scraping right after initialization
         """
-        super(Scraper, self).__init__(path, scrape_now=scrape_now, filter_=filter_)
+        super(Scraper, self).__init__(
+            path, scrape_now=scrape_now, filters=filters)
         self._keep_empty_dir = keep_empty_dir
-        if not self._root.exists():
-            raise ValueError(f"Path Not Exist: {str(self._root)}")
+        self.depth_limit = depth
+        if not self.root.exists():
+            raise ValueError(f"Path Not Exist: {str(self.root)}")
 
     def scrape(self, path: pathlib2.Path, depth: int) -> Tuple[FileNode, bool]:
         """
@@ -62,19 +88,22 @@ class Scraper(BaseScraper):
         """
         children = []
         found_any = False
-        paths = self._filter(list(path.iterdir()))
-        for filepath in paths:
-            node = FileNode(filepath, depth=depth + 1, root=self._root)
-            if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self._history:
-                subtree, found_any_ = self.scrape(filepath, depth + 1)
-                if found_any_:
+        paths = list(path.iterdir())
+        for filter_ in self.filters:
+            paths = filter_(paths)
+        if depth != self.depth_limit:
+            for filepath in paths:
+                node = FileNode(filepath, depth=depth + 1, root=self.root)
+                if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self.history:
+                    subtree, found_any_ = self.scrape(filepath, depth + 1)
+                    if found_any_:
+                        found_any = True
+                    if self._keep_empty_dir or found_any_:
+                        children.append(subtree)
+                elif filepath.is_file():
+                    children.append(node)
                     found_any = True
-                if self._keep_empty_dir or found_any_:
-                    children.append(subtree)
-            elif filepath.is_file():
-                children.append(node)
-                found_any = True
-            else:
-                pass
-            self._history.add(node.get_id())
-        return FileNode(path, children=children, depth=depth, root=self._root), found_any
+                else:
+                    pass
+                self.history.add(node.get_id())
+        return FileNode(path, children=children, depth=depth, root=self.root), found_any

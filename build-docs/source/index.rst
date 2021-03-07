@@ -11,6 +11,7 @@ Welcome to fmtree's documentation!
    :caption: Contents:
 
    docs/installation
+   docs/sample
    srcdoc/fmtree
 
 Indices and tables

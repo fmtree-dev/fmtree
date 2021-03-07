@@ -11,14 +11,18 @@ setuptools.setup(
     description="Scrape File System and output in different formats",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/HuakunShen/filetree",
+    url="https://github.com/HuakunShen/fmtree",
     project_urls={
-        "Bug Tracker": "https://github.com/HuakunShen/filetree/issues",
+        "Bug Tracker": "https://github.com/HuakunShen/fmtree/issues",
+        "Documentation": "https://huakunshen.github.io/fmtree/"
     },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+    ],
+    install_requires=[
+        'pathlib2'
     ],
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
