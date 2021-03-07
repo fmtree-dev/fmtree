@@ -1,5 +1,11 @@
 # FileTree
 
+![example workflow](https://github.com/github/docs/actions/workflows/build-docs.yml/badge.svg)
+![example workflow](https://github.com/github/docs/actions/workflows/python-package.yml/badge.svg)
+![example workflow](https://github.com/github/docs/actions/workflows/python-package-conda.yml/badge.svg)
+![example workflow](https://github.com/github/docs/actions/workflows/python-publish.yml/badge.svg)
+
+
 ## Documentation
 
 https://huakunshen.github.io/fmtree/
