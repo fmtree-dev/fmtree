@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install flake8 pytest
-          if [ -f build-env/requirements.txt ]; then pip install -r build-env/requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build Documentation with Sphinx
         run: |
           cd build-docs
