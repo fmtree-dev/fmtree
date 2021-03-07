@@ -158,8 +158,19 @@
 <span id="scraper-module"></span><h1>scraper module<a class="headerlink" href="#module-scraper" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="scraper.BaseScraper">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">scraper.</span></code><code class="sig-name descname"><span class="pre">BaseScraper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scraper.BaseScraper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">scraper.</span></code><code class="sig-name descname"><span class="pre">BaseScraper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="fmtree.html#fmtree.filter.BaseFileFilter" title="fmtree.filter.BaseFileFilter"><span class="pre">fmtree.filter.BaseFileFilter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scraper.BaseScraper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<dl class="py method">
+<dt id="scraper.BaseScraper.add_filter">
+<code class="sig-name descname"><span class="pre">add_filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="fmtree.html#fmtree.filter.BaseFileFilter" title="fmtree.filter.BaseFileFilter"><span class="pre">fmtree.filter.BaseFileFilter</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#scraper.BaseScraper.add_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a filter object to this Scraper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter</strong> (<a class="reference internal" href="filter.html#filter.BaseFileFilter" title="filter.BaseFileFilter"><em>BaseFileFilter</em></a>) – filter object</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="scraper.BaseScraper.get_tree">
 <code class="sig-name descname"><span class="pre">get_tree</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="fmtree.html#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><a class="headerlink" href="#scraper.BaseScraper.get_tree" title="Permalink to this definition">¶</a></dt>
@@ -167,15 +178,27 @@
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>root node of the scraped file tree</p>
 </dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="fmtree.html#fmtree.node.FileNode" title="fmtree.node.FileNode">FileNode</a></p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="scraper.BaseScraper.run">
 <code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="fmtree.html#fmtree.node.FileNode" title="fmtree.node.FileNode"><span class="pre">fmtree.node.FileNode</span></a><a class="headerlink" href="#scraper.BaseScraper.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>scrape the given path and form a tree structure
-:param inplace: bool: set tree inplace
-:return: the scraped tree of file nodes</p>
+<dd><p>scrape the given path and form a tree structure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inplace</strong> (<em>bool</em><em>, </em><em>optional</em>) – set tree inplace, defaults to True</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the scraped tree of file nodes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="fmtree.html#fmtree.node.FileNode" title="fmtree.node.FileNode">FileNode</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -187,7 +210,7 @@
 
 <dl class="py class">
 <dt id="scraper.Scraper">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">scraper.</span></code><code class="sig-name descname"><span class="pre">Scraper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Callable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scraper.Scraper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">scraper.</span></code><code class="sig-name descname"><span class="pre">Scraper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="fmtree.html#fmtree.filter.BaseFileFilter" title="fmtree.filter.BaseFileFilter"><span class="pre">fmtree.filter.BaseFileFilter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scraper.Scraper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#scraper.BaseScraper" title="scraper.BaseScraper"><code class="xref py py-class docutils literal notranslate"><span class="pre">scraper.BaseScraper</span></code></a></p>
 <p>Scraper of file system
 Scrape a given path with given properties such as filters, sort functions…, and turn it into a tree structure</p>
