@@ -138,33 +138,35 @@ class MarkdownLinkContentFormatter(BaseFormatter):
 
 class GithubMarkdownContentFormatter(BaseFormatter):
     def __init__(self, root: FileNode, no_readme_link: bool = True, dir_link: bool = True,
-                 full_dir_link: bool = False, remove_md_ext: bool = True) -> None:
+                 full_dir_link: bool = False, remove_md_ext: bool = True, ignore_top_level: bool = False) -> None:
         super(GithubMarkdownContentFormatter, self).__init__(root)
         self.no_readme_link = no_readme_link
         self.full_dir_link = full_dir_link
+        self.ignore_top_level = ignore_top_level
         self.dir_link = dir_link
         self.remove_md_ext = remove_md_ext
 
     def generate(self) -> io.StringIO:
         def iterate(node_: FileNode) -> None:
-            prefix_tabs = node_.get_depth() * '\t'
+            prefix_tabs = (node_.get_depth() - int(self.ignore_top_level)) * '\t'
             path = node_.get_path()
             link = './' + str(path.relative_to(self.root.get_path()))
-            if path.is_dir():
-                if self.full_dir_link:
-                    print(f"{prefix_tabs}- [{node_.get_filename()}]({link})", file=self.stringio)
-                else:
-                    if self.dir_link and (path / "README.md").exists():
+            if not (node_.get_depth() == 0 and self.ignore_top_level):
+                if path.is_dir():
+                    if self.full_dir_link:
                         print(f"{prefix_tabs}- [{node_.get_filename()}]({link})", file=self.stringio)
                     else:
-                        print(f"{prefix_tabs}- {node_.get_filename()}", file=self.stringio)
-            elif path.is_file():
-                display_name = node_.get_filename().replace(".md", "") \
-                    if node_.get_filename()[-3:] == ".md" and self.remove_md_ext else node_.get_filename()
-                if not (self.no_readme_link and path.name == "README.md"):
-                    print(f"{prefix_tabs}- [{display_name}]({link})", file=self.stringio)
-            else:
-                raise ValueError("Unhandled Error")
+                        if self.dir_link and (path / "README.md").exists():
+                            print(f"{prefix_tabs}- [{node_.get_filename()}]({link})", file=self.stringio)
+                        else:
+                            print(f"{prefix_tabs}- {node_.get_filename()}", file=self.stringio)
+                elif path.is_file():
+                    display_name = node_.get_filename().replace(".md", "") \
+                        if node_.get_filename()[-3:] == ".md" and self.remove_md_ext else node_.get_filename()
+                    if not (self.no_readme_link and path.name == "README.md"):
+                        print(f"{prefix_tabs}- [{display_name}]({link})", file=self.stringio)
+                else:
+                    raise ValueError("Unhandled Error")
             children = node_.get_children()
             for child_node in children:
                 iterate(child_node)
