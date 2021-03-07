@@ -1,5 +1,10 @@
 # FileTree
 
+![Build Documentation](https://github.com/HuakunShen/fmtree/actions/workflows/build-docs.yml/badge.svg)
+![Pytest](https://github.com/HuakunShen/fmtree/actions/workflows/python-package.yml/badge.svg)
+![Publish Package](https://github.com/HuakunShen/fmtree/actions/workflows/python-publish.yml/badge.svg)
+
+
 ## Documentation
 
 https://huakunshen.github.io/fmtree/
