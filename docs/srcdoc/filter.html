@@ -157,6 +157,37 @@
   <div class="section" id="module-filter">
 <span id="filter-module"></span><h1>filter module<a class="headerlink" href="#module-filter" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
+<dt id="filter.BaseFileFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">BaseFileFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.BaseFileFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<dl class="py method">
+<dt id="filter.BaseFileFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.BaseFileFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply filter to iterable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>Iterable</em>) – items to be filtered</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Abstract method has to be implemented</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>items to keep</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="filter.BaseFileFilter.set_root_path">
+<code class="sig-name descname"><span class="pre">set_root_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#filter.BaseFileFilter.set_root_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="filter.BaseFilter">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">BaseFilter</span></code><a class="headerlink" href="#filter.BaseFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
@@ -164,17 +195,29 @@
 <dl class="py method">
 <dt id="filter.BaseFilter.filter">
 <em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.BaseFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>taking a path and decide whether it agrees with the filter
-:param items: items to be filtered
-:return: Iterable: result after filtering</p>
+<dd><p>apply filter to iterable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>Iterable</em>) – items to be filtered</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Abstract method has to be implemented</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>items to keep</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iterable</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="filter.ExtensionFilter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">ExtensionFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.ExtensionFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">ExtensionFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.ExtensionFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFileFilter" title="filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFileFilter</span></code></a></p>
 <p>A filter that only keeps files with given extensions and intermediate directories (non-files)</p>
 <dl class="py method">
 <dt id="filter.ExtensionFilter.filter">
@@ -187,24 +230,62 @@
 </dd></dl>
 
 <dl class="py class">
+<dt id="filter.IdentityFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">IdentityFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.IdentityFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFileFilter" title="filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFileFilter</span></code></a></p>
+<dl class="py method">
+<dt id="filter.IdentityFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.IdentityFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply filter to iterable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>Iterable</em>) – items to be filtered</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Abstract method has to be implemented</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>items to keep</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iterable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="filter.MarkdownFilter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">MarkdownFilter</span></code><a class="headerlink" href="#filter.MarkdownFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">MarkdownFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.MarkdownFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFileFilter" title="filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFileFilter</span></code></a></p>
 <p>A filter that keeps only markdown files and intermediate directories (non-files)</p>
 <dl class="py method">
 <dt id="filter.MarkdownFilter.filter">
 <code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.MarkdownFilter.filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>taking a path and decide whether it agrees with the filter
-:param items: items to be filtered
-:return: Iterable: result after filtering</p>
+<dd><p>apply filter to iterable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> (<em>Iterable</em>) – items to be filtered</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – Abstract method has to be implemented</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>items to keep</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Iterable</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt id="filter.RegexFilter">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">RegexFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.RegexFilter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#filter.BaseFilter" title="filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFilter</span></code></a></p>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">RegexFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter.RegexFilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#filter.BaseFileFilter" title="filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">filter.BaseFileFilter</span></code></a></p>
 <p>Filter with Regular Expression</p>
 <dl class="py method">
 <dt id="filter.RegexFilter.filter">
@@ -214,14 +295,6 @@
 :return: Iterable: filter out file paths that don’t match regular expression</p>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py function">
-<dt id="filter.markdown_filter">
-<code class="sig-prename descclassname"><span class="pre">filter.</span></code><code class="sig-name descname"><span class="pre">markdown_filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#filter.markdown_filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function form markdown file filter
-:param items: files to be filtered
-:return: Iterable, filtered files (only markdown and directory are kept)</p>
 </dd></dl>
 
 </div>
