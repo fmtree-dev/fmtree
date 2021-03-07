@@ -6,17 +6,18 @@ from typing import List, Iterable
 
 import pathlib2
 from fmtree.scraper import Scraper
-from fmtree.filter import MarkdownFilter, BaseFileFilter
-from fmtree.format import GithubMarkdownContentFormatter
+from fmtree.filter import MarkdownFilter, BaseFileFilter, IdentityFilter
+import fmtree.filter as filter_
+from fmtree.format import GithubMarkdownContentFormatter, TreeCommandFormatter
 from fmtree import sorter
 from fmtree.node import FileNode
 from functools import cmp_to_key
 
-path = pathlib2.Path("/home/huakun/Insync/huakun.shen@gmail.com/Google Drive/OSCP")
+path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
 
 
 class OSCPExerciseSorter(sorter.BaseSorter):
-    exercise_re_pattern = re.compile("^(\d+\.)+\d+$")
+    exercise_re_pattern = re.compile("^(\\d+\\.)+\\d+$")
 
     def sorted(self, nodes: List[FileNode]) -> Iterable:
         relative_path = nodes[0].get_path().parent.relative_to(nodes[0].get_root())
@@ -52,13 +53,14 @@ class OSCPExerciseSorter(sorter.BaseSorter):
 
 
 if __name__ == '__main__':
-    # scraper = Scraper(path, scrape_now=False, keep_empty_dir=False,
-    #                   filters=[BaseFileFilter(ignore_list=['Exercises.*', 'build-tools.*', '\.git.*'])])
-    scraper = Scraper(path, scrape_now=False, keep_empty_dir=False,
-                      filters=[MarkdownFilter(ignore_list=['Exercises.*', 'build-tools.*', '\.git.*'])])
+    scraper = Scraper(path, scrape_now=False, keep_empty_dir=True, depth=1)
+    # scraper.add_filter(IdentityFilter(ignore_list=['Exercises.*', 'build-tools.*', '\\.git.*'],
+    #                                   mode=filter_.ACCEPT_MODE))
+
     scraper.run()
     sorter_ = OSCPExerciseSorter()
     tree = sorter_(scraper.get_tree())
-    formatter = GithubMarkdownContentFormatter(tree)
+    formatter = GithubMarkdownContentFormatter(tree, ignore_top_level=True)
+    # formatter = TreeCommandFormatter(tree)
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
