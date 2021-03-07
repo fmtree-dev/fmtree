@@ -3,7 +3,7 @@ name: Build Documentation
 on:
   push:
     branches:
-      - "docs"
+      - "gh-pages"
 jobs:
   build-docs:
     runs-on: ubuntu-latest
@@ -26,16 +26,7 @@ jobs:
         run: |
           cd build-docs
           sphinx-build -b html source ../docs
-      - name: push docs to master
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Auto Update Documentation
-          branch: master
-          file_pattern: .
-          commit_user_name: Huakun Shen
-          commit_user_email: huakun.shen@huakunshen.com
-          skip_dirty_check: true
-      - name: push docs to gh-pages
+      - name: build-docs
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto Update Documentation
@@ -43,7 +34,6 @@ jobs:
           file_pattern: .
           commit_user_name: Huakun Shen
           commit_user_email: huakun.shen@huakunshen.com
-          push_options: "--force"
       - name: "Run if changes have been detected"
         if: steps.build-docs.outputs.changes_detected == 'true'
         run: echo "Documentation Updated"
