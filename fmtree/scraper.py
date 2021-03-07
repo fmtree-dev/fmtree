@@ -18,6 +18,10 @@ class BaseScraper(ABC):
     def scrape(self, path: pathlib2.Path, depth: int) -> Tuple[FileNode, bool]:
         raise NotImplementedError
 
+    def add_filter(self, filter_: BaseFileFilter) -> None:
+        filter_.set_root_path(self.root)
+        self.filters.append(filter_)
+
     def run(self, inplace: bool = True) -> FileNode:
         """
         scrape the given path and form a tree structure
@@ -44,7 +48,7 @@ class Scraper(BaseScraper):
     """
 
     def __init__(self, path: pathlib2.Path, filters: Iterable[BaseFileFilter] = None, scrape_now: bool = False,
-                 keep_empty_dir: bool = False) -> None:
+                 keep_empty_dir: bool = False, depth: int = None) -> None:
         """
         Initialize Scraper with different properties and addons
         :param path: target path to scrape
@@ -53,6 +57,7 @@ class Scraper(BaseScraper):
         """
         super(Scraper, self).__init__(path, scrape_now=scrape_now, filters=filters)
         self._keep_empty_dir = keep_empty_dir
+        self.depth_limit = depth
         if not self.root.exists():
             raise ValueError(f"Path Not Exist: {str(self.root)}")
 
@@ -68,18 +73,19 @@ class Scraper(BaseScraper):
         paths = list(path.iterdir())
         for filter_ in self.filters:
             paths = filter_(paths)
-        for filepath in paths:
-            node = FileNode(filepath, depth=depth + 1, root=self.root)
-            if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self.history:
-                subtree, found_any_ = self.scrape(filepath, depth + 1)
-                if found_any_:
+        if depth != self.depth_limit:
+            for filepath in paths:
+                node = FileNode(filepath, depth=depth + 1, root=self.root)
+                if (filepath.is_symlink() or filepath.is_dir()) and node.get_id() not in self.history:
+                    subtree, found_any_ = self.scrape(filepath, depth + 1)
+                    if found_any_:
+                        found_any = True
+                    if self._keep_empty_dir or found_any_:
+                        children.append(subtree)
+                elif filepath.is_file():
+                    children.append(node)
                     found_any = True
-                if self._keep_empty_dir or found_any_:
-                    children.append(subtree)
-            elif filepath.is_file():
-                children.append(node)
-                found_any = True
-            else:
-                pass
-            self.history.add(node.get_id())
+                else:
+                    pass
+                self.history.add(node.get_id())
         return FileNode(path, children=children, depth=depth, root=self.root), found_any
