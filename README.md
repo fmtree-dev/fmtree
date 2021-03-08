@@ -6,7 +6,7 @@
 [![CircleCI](https://circleci.com/gh/fmtree-dev/fmtree.svg?style=shield)](https://circleci.com/gh/fmtree-dev/fmtree)
 ## Documentation
 
-https://huakunshen.github.io/fmtree/
+https://fmtree-dev.github.io/fmtree/
 
 
 ## Sample Output
