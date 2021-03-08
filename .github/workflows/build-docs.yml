@@ -30,7 +30,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto Update Documentation
-          branch: gh-pages
           file_pattern: .
           commit_user_name: Huakun Shen
           commit_user_email: huakun.shen@huakunshen.com
