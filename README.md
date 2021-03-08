@@ -1,9 +1,9 @@
 # FileTree
 
-![Build Documentation](https://github.com/fmtree-dev/fmtree/actions/workflows/build-docs.yml/badge.svg)
-![Pytest](https://github.com/fmtree-dev/fmtree/actions/workflows/python-package.yml/badge.svg)
+[![Build Documentation](https://github.com/fmtree-dev/fmtree/actions/workflows/build-docs.yml/badge.svg)](https://github.com/fmtree-dev/fmtree/actions/workflows/build-docs.yml)
+[![Pytest](https://github.com/fmtree-dev/fmtree/actions/workflows/python-package.yml/badge.svg)](https://github.com/fmtree-dev/fmtree/actions/workflows/python-package.yml)
 ![Publish Package](https://github.com/fmtree-dev/fmtree/actions/workflows/python-publish.yml/badge.svg)
-
+[![CircleCI](https://circleci.com/gh/fmtree-dev/fmtree.svg?style=shield)](https://circleci.com/gh/fmtree-dev/fmtree)
 ## Documentation
 
 https://huakunshen.github.io/fmtree/
