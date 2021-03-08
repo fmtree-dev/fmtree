@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.github-action-token }}
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python 3.8
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install flake8 pytest
-          if [ -f build-env/requirements.txt ]; then pip install -r build-env/requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Build Documentation with Sphinx
         run: |
           cd build-docs
@@ -35,8 +35,8 @@ jobs:
           commit_user_name: Huakun Shen
           commit_user_email: huakun.shen@huakunshen.com
       - name: "Run if changes have been detected"
-        if: steps.build-docs.outputs.changes_detected == 'true'
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
         run: echo "Documentation Updated"
       - name: "Run if no changes have been detected"
-        if: steps.build-docs.outputs.changes_detected == 'false'
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
         run: echo "Documentation Not Updated"

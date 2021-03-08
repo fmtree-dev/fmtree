@@ -13,8 +13,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/HuakunShen/fmtree",
     project_urls={
-        "Bug Tracker": "https://github.com/HuakunShen/fmtree/issues",
-        "Documentation": "https://huakunshen.github.io/fmtree/"
+        "Bug Tracker": "https://github.com/fmtree-dev/fmtree/issues",
+        "Documentation": "https://fmtree-dev.github.io/fmtree/"
     },
     classifiers=[
         "Programming Language :: Python :: 3",

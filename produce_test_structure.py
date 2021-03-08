@@ -63,5 +63,4 @@ if __name__ == '__main__':
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
 
-    # pickle.dump(tree, open(path / "tests" / "oscp.p", "wb"))
-    tree.to_stream(open(path / "tests" / "oscp.p", "wb"))
+    tree.to_stream(open(path / "tests" / "test_cases" / "oscp.p", "wb"))
