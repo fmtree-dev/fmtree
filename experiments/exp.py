@@ -14,13 +14,15 @@ from fmtree.node import FileNode
 from functools import cmp_to_key
 
 path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
+path = pathlib2.Path("D:\\gdrive\\OSCP")
 
 
 class OSCPExerciseSorter(sorter.BaseSorter):
     exercise_re_pattern = re.compile("^(\\d+\\.)+\\d+$")
 
     def sorted(self, nodes: List[FileNode]) -> Iterable:
-        relative_path = nodes[0].get_path().parent.relative_to(nodes[0].get_root())
+        relative_path = nodes[0].get_path(
+        ).parent.relative_to(nodes[0].get_root())
         filenames = [node.get_filename() for node in nodes]
         max_num_count = max([len(filename.split("."))
                              for filename in filenames])
@@ -53,14 +55,13 @@ class OSCPExerciseSorter(sorter.BaseSorter):
 
 
 if __name__ == '__main__':
-    scraper = Scraper(path, scrape_now=False, keep_empty_dir=True, depth=1)
-    # scraper.add_filter(IdentityFilter(ignore_list=['Exercises.*', 'build-tools.*', '\\.git.*'],
-    #                                   mode=filter_.ACCEPT_MODE))
-
+    scraper = Scraper(path, scrape_now=False, keep_empty_dir=True, depth=10)
+    scraper.add_filter(MarkdownFilter())
     scraper.run()
     sorter_ = OSCPExerciseSorter()
     tree = sorter_(scraper.get_tree())
-    formatter = GithubMarkdownContentFormatter(tree, ignore_top_level=True)
+    formatter = GithubMarkdownContentFormatter(tree, ignore_root_dir=True, dir_link=True, full_dir_link=False,
+                                               link_dir_readme=True)
     # formatter = TreeCommandFormatter(tree)
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
