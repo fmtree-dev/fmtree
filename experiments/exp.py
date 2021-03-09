@@ -14,7 +14,7 @@ from fmtree.node import FileNode
 from functools import cmp_to_key
 
 path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
-path = pathlib2.Path("D:\\gdrive\\OSCP")
+path = pathlib2.Path("/home/huakun/Insync/huakun.shen@gmail.com/Google Drive/OSCP")
 
 
 class OSCPExerciseSorter(sorter.BaseSorter):
@@ -55,13 +55,18 @@ class OSCPExerciseSorter(sorter.BaseSorter):
 
 
 if __name__ == '__main__':
-    scraper = Scraper(path, scrape_now=False, keep_empty_dir=True, depth=10)
+    scraper = Scraper(path, scrape_now=False, keep_empty_dir=False)
     scraper.add_filter(MarkdownFilter())
     scraper.run()
     sorter_ = OSCPExerciseSorter()
     tree = sorter_(scraper.get_tree())
-    formatter = GithubMarkdownContentFormatter(tree, ignore_root_dir=True, dir_link=True, full_dir_link=False,
-                                               link_dir_readme=True)
+    formatter = GithubMarkdownContentFormatter(tree,
+                                               no_readme_link=True,
+                                               dir_link=True,
+                                               full_dir_link=False,
+                                               remove_md_ext=True,
+                                               ignore_root_dir=True,
+                                               link_dir_readme=False)
     # formatter = TreeCommandFormatter(tree)
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
