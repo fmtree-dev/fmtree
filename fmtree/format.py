@@ -8,6 +8,9 @@ from fmtree.node import FileNode
 
 
 class BaseFormatter(ABC):
+    """
+    Base Class of all formatters
+    """
     def __init__(self, root: FileNode) -> None:
         self.root = root
         self.stringio = io.StringIO()
