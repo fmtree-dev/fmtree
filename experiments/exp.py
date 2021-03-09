@@ -1,17 +1,14 @@
-import pathlib2
 import re
 import sys
-import argparse
-from typing import List, Iterable
-
 import pathlib2
+from typing import List, Iterable
+from functools import cmp_to_key
+
 from fmtree.scraper import Scraper
-from fmtree.filter import MarkdownFilter, BaseFileFilter, IdentityFilter
-import fmtree.filter as filter_
-from fmtree.format import GithubMarkdownContentFormatter, TreeCommandFormatter
+from fmtree.filter import MarkdownFilter
+from fmtree.format import GithubMarkdownContentFormatter
 from fmtree import sorter
 from fmtree.node import FileNode
-from functools import cmp_to_key
 
 path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
 path = pathlib2.Path("/home/huakun/Insync/huakun.shen@gmail.com/Google Drive/OSCP")
@@ -67,6 +64,5 @@ if __name__ == '__main__':
                                                remove_md_ext=True,
                                                ignore_root_dir=True,
                                                link_dir_readme=False)
-    # formatter = TreeCommandFormatter(tree)
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
