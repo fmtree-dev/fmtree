@@ -11,7 +11,6 @@ from fmtree.format import TreeCommandFormatter
 from fmtree import sorter
 from fmtree import utils
 
-
 top_level_path = pathlib2.Path(__file__).parent.parent.absolute()
 
 
@@ -52,13 +51,14 @@ class OSCPExerciseSorter(sorter.BaseSorter):
 if __name__ == '__main__':
     # reproduce tree
     print("reproduce tree from test data")
-
     read_tree = pickle.load(open(top_level_path / "tests" / "test_cases" / "oscp.p", "rb"))
     target_path = top_level_path / "playground"
+
     utils.reproduce_fs_tree(target_path, read_tree)
 
     target_path = target_path / "OSCP"
     scraper = Scraper(target_path, scrape_now=False, keep_empty_dir=False)
+
     scraper.add_filter(RegexFilter(['.+\\.md']))
 
     scraper.run()
