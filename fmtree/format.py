@@ -8,6 +8,9 @@ from fmtree.node import FileNode
 
 
 class BaseFormatter(ABC):
+    """
+    Base Class of all formatters
+    """
     def __init__(self, root: FileNode) -> None:
         self.root = root
         self.stringio = io.StringIO()
@@ -144,6 +147,9 @@ class GithubMarkdownContentFormatter(BaseFormatter):
     def __init__(self, root: FileNode, no_readme_link: bool = True, dir_link: bool = True,
                  full_dir_link: bool = False, remove_md_ext: bool = True, ignore_root_dir: bool = False,
                  link_dir_readme: bool = True) -> None:
+        """
+        root: root of scraped file tree
+        """
         super(GithubMarkdownContentFormatter, self).__init__(root)
         self.no_readme_link = no_readme_link
         self.full_dir_link = full_dir_link
