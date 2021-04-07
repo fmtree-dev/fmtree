@@ -2,7 +2,7 @@ import copy
 from typing import Iterable, List
 from abc import ABC, abstractmethod
 
-from fmtree.node import FileNode
+from fmtree.core.node import FileNode
 
 
 class BaseSorter(ABC):

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Fmtree Visualizer</title>
+    <style>
+      {{bootstrap_css}}
+    </style>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      img {
+        padding: 3em;
+        /* width: 30%; */
+      }
+      .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      .image-container > img {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+      }
+
+      details {
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        position: relative;
+        margin-left: 3rem;
+      }
+
+      details::before {
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        margin-left: -2rem;
+        background-color: rgba(50, 50, 50, 0.7);
+        content: '';
+      }
+
+      @media (max-width: 1200px) {
+        .image-container > img {
+          flex: 30%;
+          max-width: 30%;
+        }
+      }
+
+      @media (max-width: 800px) {
+        .image-container > img {
+          flex: 50%;
+          max-width: 50%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .image-container {
+          flex-direction: column;
+        }
+        .image-container > img {
+          flex: 100%;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-lg">
+      <h1>Fmtree Visualizer</h1>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="toggle" />
+        <label class="form-check-label" for="toggle">Show All Content</label>
+      </div>
+      <div id="root" class="image-container"></div>
+    </div>
+
+    <script>
+      {{bootstrap_js}}
+    </script>
+
+    <script>
+      {{jquery_js}}
+    </script>
+
+    <script>
+      const data = {{data}}
+      console.log(data)
+      const root_folder = data.filename;
+
+      const constructNode = (node) => {
+        let relative_path = node.relative_path.replace("\\\\", "/")
+        relative_path = relative_path.replace("\\", "/")
+        if (node.children && node.children.length !== 0) {
+          const container = $('<div />')
+            .attr('id', `id-${node.id}`)
+            .addClass('image-container');
+          for (const child of node.children) {
+            container.append(constructNode(child));
+          }
+          const details_summary =
+            relative_path === '.'
+              ? root_folder
+              : `${root_folder} / ${relative_path}`;
+          const details = $(
+            `<details><summary>${details_summary}</summary></details>`
+          );
+          console.log(details);
+          container.appendTo(details);
+          return details;
+        } else {
+          const img = $('<img />')
+            .attr('src', relative_path)
+            .attr('id', `id-${node.id}`)
+            .addClass('img-thumbnail');
+          return img;
+        }
+      };
+      $('#root').append(constructNode(data));
+      $('details').first().attr('open', true);
+      $('#toggle').on('click', (e) => {
+        if (e.target.checked) {
+          $('details').attr('open', true);
+        } else {
+          $('details').attr('open', false);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="fmtree",
-    version="0.0.4",
+    version="0.0.5",
     author="Huakun Shen",
     author_email="huakun.shen@huakunshen.com",
     description="Scrape File System and output in different formats",
@@ -22,7 +22,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'pathlib2==2.3.5'
+        'pathlib2==2.3.5',
+        'Jinja2==2.11.3'
     ],
     packages=setuptools.find_packages(),
     python_requires=">=3.6",

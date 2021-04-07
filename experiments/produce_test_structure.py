@@ -4,12 +4,11 @@ import sys
 from typing import List, Iterable
 from functools import cmp_to_key
 import pathlib2
-from fmtree.scraper import Scraper
-from fmtree.filter import RegexFilter
-from fmtree.node import FileNode
-from fmtree.format import TreeCommandFormatter
-from fmtree import sorter
-from fmtree import utils
+from fmtree.core.scraper import Scraper
+from fmtree.core.filter import RegexFilter
+from fmtree.core.node import FileNode
+from fmtree.core.format import TreeCommandFormatter
+from fmtree.core import utils, sorter
 
 top_level_path = pathlib2.Path(__file__).parent.parent.absolute()
 

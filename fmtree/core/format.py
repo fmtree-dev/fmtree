@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 import pathlib2
 
-from fmtree.node import FileNode
+from fmtree.core.node import FileNode
 
 
 class BaseFormatter(ABC):
