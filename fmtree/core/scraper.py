@@ -1,6 +1,6 @@
-from fmtree.node import FileNode
-from fmtree.filter import BaseFilter, BaseFileFilter
-from typing import Callable, Tuple, Iterable
+from fmtree.core.node import FileNode
+from fmtree.core.filter import BaseFileFilter
+from typing import Tuple, Iterable
 from abc import ABC, abstractmethod
 import pathlib2
 
@@ -16,6 +16,8 @@ class BaseScraper(ABC):
         :param filters: list of filters, defaults to None
         :type filters: Iterable[BaseFileFilter], optional
         """
+        if isinstance(path, str):
+            path = pathlib2.Path(path)
         self.root = path.resolve().absolute()
         self.history = set()
         self.filters = filters if filters else []

@@ -4,11 +4,11 @@ import pathlib2
 from typing import List, Iterable
 from functools import cmp_to_key
 
-from fmtree.scraper import Scraper
-from fmtree.filter import MarkdownFilter
-from fmtree.format import GithubMarkdownContentFormatter
-from fmtree import sorter
-from fmtree.node import FileNode
+from fmtree.core.scraper import Scraper
+from fmtree.core.filter import MarkdownFilter
+from fmtree.core.format import GithubMarkdownContentFormatter
+from fmtree.core import sorter
+from fmtree.core.node import FileNode
 
 path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
 path = pathlib2.Path("/home/huakun/Insync/huakun.shen@gmail.com/Google Drive/OSCP")

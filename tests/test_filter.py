@@ -1,4 +1,4 @@
-import fmtree.filter as filter_
+import fmtree.core.filter as filter_
 
 import pathlib2
 

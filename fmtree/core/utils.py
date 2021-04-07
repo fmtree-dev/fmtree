@@ -1,6 +1,6 @@
 import pathlib2
 
-from fmtree.node import FileNode
+from fmtree.core.node import FileNode
 
 
 def reproduce_fs_tree(target_dir: pathlib2.Path, root: FileNode) -> None:

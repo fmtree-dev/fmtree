@@ -93,7 +93,8 @@ class FileNode(BaseNode):
         """
         self._path = path
         self._root = root
-        self._relative_path = self._path.relative_to(self._root) if self._root else None
+        self._relative_path = self._path.relative_to(
+            self._root) if self._root else None
         self._depth = depth
         self._filename = path.name
         self._stat = path.stat()

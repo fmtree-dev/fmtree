@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 import re
 from typing import List, Iterable, TypeVar
 
-from fmtree.node import FileNode
+from .constants import HTML_IMAGE_EXTENSIONS
 
 T = TypeVar('T')
 ACCEPT_MODE = 0
@@ -148,3 +148,13 @@ class RegexFilter(BaseFileFilter):
             filter(lambda filepath: sum(
                 map(lambda pattern: pattern.match(str(filepath)) is not None or filepath.is_dir(), self._patterns)) > 0,
                    items))
+
+
+class ImageFilter(ExtensionFilter):
+    def __init__(self, image_extensions: List[str] = HTML_IMAGE_EXTENSIONS, ignore_list: Iterable = None,
+                 root_path: pathlib2.Path = None,
+                 mode: int = IGNORE_MODE):
+        super(ImageFilter, self).__init__(image_extensions, ignore_list=ignore_list, root_path=root_path, mode=mode)
+
+    def filter(self, items: List[T]) -> List[T]:
+        return super().filter(items)
