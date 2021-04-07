@@ -17,6 +17,7 @@ def main(args):
     formatter = TreeCommandFormatter(tree)
     stringio = formatter.generate()
     formatter.to_stream(sys.stdout)
+    print(tree.to_json())
 
 
 if __name__ == '__main__':

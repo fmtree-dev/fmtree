@@ -6,6 +6,7 @@ import pickle
 import pathlib2
 from abc import ABC, abstractmethod
 from typing import List, Union, io
+import json
 
 
 class UniqueFileIdentifier:
@@ -160,7 +161,7 @@ class FileNode(BaseNode):
         """
         return self._depth
 
-    def get_root(self) -> FileNode:
+    def get_root(self) -> pathlib2.Path:
         """
         :return: node's root path
         """
@@ -180,3 +181,18 @@ class FileNode(BaseNode):
 
     def to_stream(self, stream: io) -> None:
         return pickle.dump(self, stream)
+
+    def to_dict(self) -> dict:
+        children = [child.to_dict() for child in self._children]
+        return {
+            'id': str(self._id),
+            'depth': self._depth,
+            'filename': self._filename,
+            'path': str(self._path),
+            'relative_path': str(self._relative_path),
+            'root': str(self._root),
+            'children': children
+        }
+
+    def to_json(self, indent=None):
+        return json.dumps(self.to_dict(), indent=indent)
