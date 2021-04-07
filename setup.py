@@ -22,7 +22,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'pathlib2==2.3.5'
+        'pathlib2==2.3.5',
+        'Jinja2==2.11.3'
     ],
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
