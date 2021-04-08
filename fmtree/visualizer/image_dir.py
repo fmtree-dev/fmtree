@@ -19,7 +19,7 @@ def main(args):
     formatter = TreeCommandFormatter(tree)
     if not args['silent']:
         formatter.to_stream(sys.stdout)
-    json_content = tree.to_json(indent=2)
+    json_content = tree.to_json(indent=None)
     file_loader = FileSystemLoader(str(current_directory / 'template'))
     env = Environment(loader=file_loader)
     template = env.get_template('index.html')
