@@ -191,7 +191,8 @@ class FileNode(BaseNode):
             'path': str(self._path),
             'relative_path': str(self._relative_path),
             'root': str(self._root),
-            'children': children
+            'children': children,
+            'st_size': self._stat.st_size
         }
 
     def to_json(self, indent=None):
