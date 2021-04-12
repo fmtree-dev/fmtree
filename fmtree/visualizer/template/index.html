@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Fmtree Visualizer</title>
-    <style>
-      {{bootstrap_css}}
-    </style>
+    {{bootstrap_css}}
     <style>
       * {
         box-sizing: border-box;
@@ -27,6 +25,7 @@
         flex: 25%;
         max-width: 25%;
         padding: 0 4px;
+        cursor: pointer;
       }
 
       details {
@@ -44,6 +43,12 @@
         margin-left: -2rem;
         background-color: rgba(50, 50, 50, 0.7);
         content: '';
+      }
+
+      #setting {
+        background-color: #fff;
+        padding-top: 0.3rem;
+        padding-bottom: 1rem;
       }
 
       @media (max-width: 1200px) {
@@ -74,34 +79,73 @@
   <body>
     <div class="container-lg">
       <h1>Fmtree Visualizer</h1>
-      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="toggle" />
-        <label class="form-check-label" for="toggle">Show All Content</label>
+      <div id="setting" class="row sticky-top">
+        <div class="col-lg-6">
+          <label for="image-width-input">Image Width</label>
+          <input
+            id="image-width-input"
+            class="form-control"
+            placeholder="Image Width Percentage"
+            type="number"
+            value="25"
+          />
+        </div>
+        <div class="form-check form-switch col-lg-6">
+          <input type="checkbox" id="toggle" />
+          <label for="toggle">Show All</label>
+        </div>
       </div>
       <div id="root" class="image-container"></div>
+
+
+      <div class="modal fade" id="image-details-modal" tabindex="-1" aria-labelledby="image-details-modal-Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="image-details-modal-Label"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="img-details-modal-body" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    {{bootstrap_js}}
+
+    {{jquery_js}}
 
     <script>
-      {{bootstrap_js}}
-    </script>
-
-    <script>
-      {{jquery_js}}
+      // helpers
+      function bytesToSize(bytes) {
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+        if (bytes === 0) return 'n/a'
+        const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10)
+        if (i === 0) return `${bytes} ${sizes[i]})`
+        return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
+      }
     </script>
 
     <script>
       const data = {{data}}
-      console.log(data)
       const root_folder = data.filename;
-
+      const dataMap = new Map();
       const constructNode = (node) => {
-        let relative_path = node.relative_path.replace("\\\\", "/")
-        relative_path = relative_path.replace("\\", "/")
+        let relative_path = node.relative_path.replace('\\\\', '/');
+        relative_path = relative_path.replace('\\', '/');
         if (node.children && node.children.length !== 0) {
           const container = $('<div />')
             .attr('id', `id-${node.id}`)
             .addClass('image-container');
-          for (const child of node.children) {
+          const children = node.children.sort(function(a, b){
+            return a.children.length - b.children.length;
+          });
+
+          for (const child of children) {
             container.append(constructNode(child));
           }
           const details_summary =
@@ -111,10 +155,10 @@
           const details = $(
             `<details><summary>${details_summary}</summary></details>`
           );
-          console.log(details);
           container.appendTo(details);
           return details;
         } else {
+          dataMap[node.id] = node;
           const img = $('<img />')
             .attr('src', relative_path)
             .attr('id', `id-${node.id}`)
@@ -124,6 +168,7 @@
       };
       $('#root').append(constructNode(data));
       $('details').first().attr('open', true);
+      {{show_all}}
       $('#toggle').on('click', (e) => {
         if (e.target.checked) {
           $('details').attr('open', true);
@@ -131,6 +176,31 @@
           $('details').attr('open', false);
         }
       });
+      $('#image-width-input').on('input', function (e) {
+        $('.image-container > img').css('max-width', `${e.target.value}%`);
+      });
+
+      // show image details
+      $(".image-container > img").on('click', function(e) {
+        const target = e.target;
+        var imgDetailModal = new bootstrap.Modal(document.getElementById('image-details-modal'), {
+          keyboard: false
+        })
+        const id = target.id.substring(3, target.id.length)
+        const imgData = dataMap[id];
+        $("#img-details-modal-body").html("");
+        let relative_path = imgData.relative_path.replace('\\\\', '/');
+        relative_path = relative_path.replace('\\', '/');
+        const img = $('<img />')
+            .attr('src', relative_path)
+            .attr('id', `id-${id}-detail`)
+            .addClass('img-thumbnail');
+        $("#img-details-modal-body").append(img)
+        $("#image-details-modal-Label").html(imgData.filename)
+        $("#img-details-modal-body").append(`<p><strong>File Location: </strong><code>${imgData.path}</code></p>`)
+        $("#img-details-modal-body").append(`<p><strong>File Size: </strong>${bytesToSize(imgData.st_size)}</p>`)
+        imgDetailModal.show();
+      })
     </script>
   </body>
 </html>
