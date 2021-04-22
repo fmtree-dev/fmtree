@@ -139,8 +139,8 @@
       const root_folder = data.filename;
       const dataMap = new Map();
       const constructNode = (node) => {
-        let relative_path = node.relative_path.replace('\\\\', '/');
-        relative_path = relative_path.replace('\\', '/');
+        let img_path = node.path.replace('\\\\', '/');
+        img_path = img_path.replace('\\', '/');
         if (node.children && node.children.length !== 0) {
           const container = $('<div />')
             .attr('id', `id-${node.id}`)
@@ -153,9 +153,9 @@
             container.append(constructNode(child));
           }
           const details_summary =
-            relative_path === '.'
+            img_path === '.'
               ? root_folder
-              : `${root_folder} / ${relative_path}`;
+              : `${root_folder} / ${img_path}`;
           const details = $(
             `<details><summary>${details_summary}</summary></details>`
           );
@@ -164,7 +164,7 @@
         } else {
           dataMap[node.id] = node;
           const img = $('<img />')
-            .attr('src', relative_path)
+            .attr('src', img_path)
             .attr('id', `id-${node.id}`)
             .addClass('img-thumbnail');
           return img;
@@ -172,7 +172,9 @@
       };
       $('#root').append(constructNode(data));
       $('details').first().attr('open', true);
-      {{show_all}}
+      {% if show_all == true %}
+        $('details').attr('open', true);
+      {% endif %}
       $('#toggle').on('click', (e) => {
         if (e.target.checked) {
           $('details').attr('open', true);
@@ -193,10 +195,10 @@
         const id = target.id.substring(3, target.id.length)
         const imgData = dataMap[id];
         $("#img-details-modal-body").html("");
-        let relative_path = imgData.relative_path.replace('\\\\', '/');
-        relative_path = relative_path.replace('\\', '/');
+        let img_path = imgData.path.replace('\\\\', '/');
+        img_path = img_path.replace('\\', '/');
         const img = $('<img />')
-            .attr('src', relative_path)
+            .attr('src', img_path)
             .attr('id', `id-${id}-detail`)
             .addClass('img-thumbnail');
         $("#img-details-modal-body").append(img)

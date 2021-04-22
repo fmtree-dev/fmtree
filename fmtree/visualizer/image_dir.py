@@ -18,16 +18,20 @@ bootstrap_js_cdn = """
 jquery_cdn = """
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 """
-show_all_js = "$('details').attr('open', true);"
+
 
 def main(args):
-    print(args)
-    scraper = Scraper(pathlib2.Path(args['input']), scrape_now=False, keep_empty_dir=False)
+    if not args['quiet']:
+        print("Arguments")
+        for key, value in args.items():
+            print(f"\t{key}: {value}")
+    scraper = Scraper(pathlib2.Path(args['input']), scrape_now=False, keep_empty_dir=False, depth=args['depth'])
     scraper.add_filter(ImageFilter())
     scraper.run()
     tree = scraper.get_tree()
     formatter = TreeCommandFormatter(tree)
-    if not args['silent']:
+    if not args['quiet']:
+        formatter.generate()
         formatter.to_stream(sys.stdout)
     json_content = tree.to_json(indent=None)
     file_loader = FileSystemLoader(str(current_directory / 'template'))
@@ -42,18 +46,21 @@ def main(args):
             bootstrap_js = "<script>" + f.read() + "</script>"
         with open(str(current_directory / 'template' / 'assets' / 'jquery-3.6.0.min.js'), 'r') as f:
             jquery_js = "<script>" + f.read() + "</script>"
-    show_all = show_all_js if args['show_all'] else ""
     output = template.render(data=json_content, bootstrap_css=bootstrap_css, bootstrap_js=bootstrap_js,
-                             jquery_js=jquery_js, show_all=show_all)
-    with open(str(pathlib2.Path(args['input']) / 'fmtree-image-visualizer.html'), 'w') as f:
+                             jquery_js=jquery_js, show_all=args['show_all'])
+    output_path = args['output'] if args['output'] else str(
+        pathlib2.Path(args['input']) / 'fmtree-image-visualizer.html')
+    with open(output_path, 'w') as f:
         f.write(output)
-    print("finished")
+    if not args['quiet']:
+        print("finished")
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Fmtree Visualizer Parser")
     parser.add_argument('input', help='input path')
-    parser.add_argument('--silent', type=bool, default=False, help="whether to print out the directory")
+    parser.add_argument('-o', '--output', help='output directory to save html')
+    parser.add_argument('-q', '--quiet', action='store_true', help="whether to print out the directory")
     parser.add_argument('-d', '--depth', type=int, default=10, help="Directory depth to parse")
     parser.add_argument('--cdn', action='store_true',
                         help="Use CDN for libraries, requires internet access, minimize html size")
