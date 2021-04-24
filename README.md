@@ -164,6 +164,16 @@ optional arguments:
 python -m visualizer.image_dir --cdn /home/user/images
 ```
 
+#### Inspiration
+
+This is a one-liner bash script that puts all images into an html, but with lots of limitations:
+- no styling (width problem)
+- doesn't support nested image directory
+- not interactive (cannot collapse image etc.)
+
+```bash
+for file in $(ls);do echo "<img src=\"./$file\"/>" >> index.html; done
+```
 
 
 
