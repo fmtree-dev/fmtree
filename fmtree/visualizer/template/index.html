@@ -153,7 +153,7 @@
           const details_summary =
             node.path === '.'
               ? root_folder
-              : `${root_folder} / ${node.path}`;
+              : node.path;
           const details = $(
             `<details><summary>${details_summary}</summary></details>`
           );
@@ -202,6 +202,24 @@
         $("#img-details-modal-body").append(`<p><strong>File Size: </strong>${bytesToSize(imgData.st_size)}</p>`)
         imgDetailModal.show();
       })
+
+      // keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowUp') {
+          $("#image-width-input").val(parseInt($("#image-width-input").val()) + 1)
+          $("#image-width-input").trigger('input');
+        } else if (e.code === 'ArrowDown') {
+          $("#image-width-input").val(parseInt($("#image-width-input").val()) - 1)
+          $("#image-width-input").trigger('input');
+        } else if (e.code === 'KeyS') {
+          document.getElementById("toggle").checked = !document.getElementById("toggle").checked;
+          if (document.getElementById("toggle").checked) {
+            $('details').attr('open', true);
+          } else {
+            $('details').attr('open', false);
+          }
+        }
+      });
     </script>
   </body>
 </html>

@@ -59,7 +59,7 @@ def main(args_dict: dict):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("fmtree visualizer argument parser")
     parser.add_argument('--debug', action='store_true', help='debug mode')
-    parser.add_argument('input', help='input path')
+    parser.add_argument('input', default='.', help='input path')
 
     # output location, there can be multiple output
     parser.add_argument('--stdout', action='store_true', help='output to stdout')
