@@ -42,15 +42,26 @@ class BaseFileFilter(BaseFilter):
 
     def __init__(self, ignore_list: Iterable = None, root_path: pathlib2.Path = None, mode: int = IGNORE_MODE) -> None:
         """BaseFilter Initializer
-        :param ignore_list: list of regex to ignore
-        :type ignore_list: List[str]
+
+        :param ignore_list: list of regex to ignore, defaults to None
+        :type ignore_list: Iterable, optional
+        :param root_path: path to scrape, used to obtain relative path, defaults to None
+        :type root_path: pathlib2.Path, optional
+        :param mode: whether the filter is for keeping files or filtering out files, defaults to IGNORE_MODE
+        :type mode: int, optional
         """
+
         self.ignore_list = list(map(re.compile, ignore_list)) if ignore_list else []
         self.root_path = root_path
         assert mode == ACCEPT_MODE or mode == IGNORE_MODE
         self.mode = mode
 
     def set_root_path(self, root_path: pathlib2.Path) -> None:
+        """root_path setter
+
+        :param root_path: path to scrape, used to obtain relative path
+        :type root_path: pathlib2.Path
+        """
         self.root_path = root_path.resolve().absolute()
 
     # @abstractmethod
@@ -67,6 +78,7 @@ class BaseFileFilter(BaseFilter):
 
     def __call__(self, paths: Iterable[pathlib2.Path]) -> Iterable[pathlib2.Path]:
         """__call__ function to apply filter
+        A wrapper for self.filter, pre-filter based on ignore_list first, then pass the result into self.filter
         :param paths: paths to be filtered
         :type paths: Iterable
         :return: result after filtering
@@ -84,7 +96,16 @@ class BaseFileFilter(BaseFilter):
 
 
 class IdentityFilter(BaseFileFilter):
+    """Useless filter, return what it receives"""
+
     def filter(self, items: Iterable) -> Iterable:
+        """return what it gets directly, does no filtering
+
+        :param items: paths to be filtered
+        :type items: Iterable
+        :return: filtered paths (same as what's passed in)
+        :rtype: Iterable
+        """
         return items
 
 
@@ -105,9 +126,16 @@ class ExtensionFilter(BaseFileFilter):
 
     def __init__(self, extensions: List[str], ignore_list: Iterable = None, root_path: pathlib2.Path = None,
                  mode: int = IGNORE_MODE) -> None:
-        """
-        Initialize Extension Filter
+        """Initialize Extension Filter
+
         :param extensions: list of allowed file extensions
+        :type extensions: List[str]
+        :param ignore_list: [description], defaults to None
+        :type ignore_list: Iterable, optional
+        :param root_path: [description], defaults to None
+        :type root_path: pathlib2.Path, optional
+        :param mode: [description], defaults to IGNORE_MODE
+        :type mode: int, optional
         """
         super(ExtensionFilter, self).__init__(ignore_list=ignore_list, root_path=root_path, mode=mode)
         self._extensions = extensions
@@ -147,13 +175,28 @@ class RegexFilter(BaseFileFilter):
         return list(
             filter(lambda filepath: sum(
                 map(lambda pattern: pattern.match(str(filepath)) is not None or filepath.is_dir(), self._patterns)) > 0,
-                   items))
+                items))
 
 
 class ImageFilter(ExtensionFilter):
+    """A variant/wrapper of ExtensionFilter
+    Filter based on commonly-seen image extensions (can be customized)
+    """
+
     def __init__(self, image_extensions: List[str] = HTML_IMAGE_EXTENSIONS, ignore_list: Iterable = None,
-                 root_path: pathlib2.Path = None,
-                 mode: int = IGNORE_MODE):
+                 root_path: pathlib2.Path = None, mode: int = IGNORE_MODE):
+        """ImageFilter Initializer
+
+        :param image_extensions: target extensions, defaults to HTML_IMAGE_EXTENSIONS
+        :type image_extensions: List[str], optional
+        :param ignore_list: paths to ignore, defaults to None
+        :type ignore_list: Iterable, optional
+        :param root_path: path to scrape, defaults to None
+        :type root_path: pathlib2.Path, optional
+        :param mode: whether the filter is IGNORE_MODE or ACCEPT_MODE, defaults to IGNORE_MODE
+        :type mode: int, optional
+        """
+
         super(ImageFilter, self).__init__(image_extensions, ignore_list=ignore_list, root_path=root_path, mode=mode)
 
     def filter(self, items: List[T]) -> List[T]:

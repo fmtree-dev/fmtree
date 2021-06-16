@@ -10,21 +10,41 @@ from fmtree.core.node import FileNode
 class BaseFormatter(ABC):
     """
     Base Class of all formatters
+    The reason the abstract method generate() isn't a static method and root is required to initialize an instance of 
+    this class is because there are a few other methods in this class that requires the object to remember the content
     """
+
     def __init__(self, root: FileNode) -> None:
         self.root = root
         self.stringio = io.StringIO()
 
     @abstractmethod
     def generate(self) -> io.StringIO:
+        """Generate a string form file tree given the root to the tree
+
+        :raises NotImplementedError: Abstract class must be implemented
+        :return: string form file tree
+        :rtype: io.StringIO
+        """
         raise NotImplementedError
 
     def get_stringio(self) -> io.StringIO:
+        """Getter for stringio. Content of generated string-form file tree is stored in self.stringio
+
+        :return: stringio object
+        :rtype: io.StringIO
+        """
         return self.stringio
 
     def to_file(self, filename: Union[pathlib2.Path, str], append: bool = False) -> None:
-        path = str(filename.absolute()) if isinstance(
-            filename, pathlib2.Path) else filename
+        """Formatted file tree to file
+
+        :param filename: file path to export to
+        :type filename: Union[pathlib2.Path, str]
+        :param append: whether results will be appended or overwrite existing file, defaults to False
+        :type append: bool, optional
+        """
+        path = str(filename.absolute()) if isinstance(filename, pathlib2.Path) else filename
         file_mode = "a" if append else "w"
         with open(path, file_mode) as f:
             f.write(self.stringio.getvalue())
@@ -34,6 +54,8 @@ class BaseFormatter(ABC):
 
 
 class TabFormatter(BaseFormatter):
+    """File Tree Structure by Indentation
+    """
     def __init__(self, root: FileNode) -> None:
         super(TabFormatter, self).__init__(root)
 
@@ -50,6 +72,7 @@ class TabFormatter(BaseFormatter):
 
 
 class TreeCommandFormatter(BaseFormatter):
+    """File Tree Formatter that has GNU tree style format"""
     # prefix components:
     space = '    '
     branch = '│   '
@@ -65,7 +88,7 @@ class TreeCommandFormatter(BaseFormatter):
             children = node_.get_children()
             # contents each get pointers that are ├── with a final └── :
             pointers = [TreeCommandFormatter.tee] * \
-                       (len(children) - 1) + [TreeCommandFormatter.last]
+                (len(children) - 1) + [TreeCommandFormatter.last]
             for pointer, node in zip(pointers, children):
                 yield prefix + pointer + node.get_filename()
                 if children:  # extend the prefix and recurse:
@@ -81,6 +104,7 @@ class TreeCommandFormatter(BaseFormatter):
 
 
 class ListFileFormatter(BaseFormatter):
+    """List all file nodes, no styling at all"""
     def __init__(self, root: FileNode) -> None:
         super(ListFileFormatter, self).__init__(root)
         self.paths = []
@@ -102,7 +126,32 @@ class ListFileFormatter(BaseFormatter):
         return self.paths
 
 
+class HTMLFormatter(BaseFormatter):
+    """HTML style file tree formatter"""
+    def __init__(self, root: FileNode) -> None:
+        super(HTMLFormatter, self).__init__(root)
+        self.paths = []
+
+    def generate(self) -> io.StringIO:
+        def iterate(node_: FileNode) -> Iterable:
+            prefix_tabs = node_.get_depth() * '\t'
+            if node_.is_file():
+                yield f"{prefix_tabs}<li>{node_.get_filename()}</li>"
+            else:
+                yield f"{prefix_tabs}<ul>"
+                yield f"{prefix_tabs}\t<lh>{node_.get_filename()}</lh>"
+            children = node_.get_children()
+            for child_node in children:
+                yield from iterate(child_node)
+            if node_.is_dir():
+                yield f"{prefix_tabs}</ul>"
+        for line in iterate(self.root):
+            self.stringio.write(line + "\n")
+        return self.stringio
+
+
 class MarkdownContentFormatter(BaseFormatter):
+    """MarkDown style file tree formatter"""
     def __init__(self, root: FileNode) -> None:
         super(MarkdownContentFormatter, self).__init__(root)
 
@@ -120,6 +169,7 @@ class MarkdownContentFormatter(BaseFormatter):
 
 
 class MarkdownLinkContentFormatter(BaseFormatter):
+    """MarkDown style file tree formatter with MarkDown links"""
     def __init__(self, root: FileNode) -> None:
         super(MarkdownLinkContentFormatter, self).__init__(root)
 
@@ -144,6 +194,7 @@ class MarkdownLinkContentFormatter(BaseFormatter):
 
 
 class GithubMarkdownContentFormatter(BaseFormatter):
+    """GitHub Markdown style file tree formatter with richer options than regular MarkDown formatter"""
     def __init__(self, root: FileNode, no_readme_link: bool = True, dir_link: bool = True,
                  full_dir_link: bool = False, remove_md_ext: bool = True, ignore_root_dir: bool = False,
                  link_dir_readme: bool = True) -> None:

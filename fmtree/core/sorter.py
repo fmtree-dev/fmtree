@@ -7,8 +7,9 @@ from fmtree.core.node import FileNode
 
 class BaseSorter(ABC):
     """
-    Sorter Base Class for sorting child nodes
+    Base Sorter Class for sorting child nodes
     """
+
     def run(self, root_node: FileNode) -> FileNode:
         """
         Traverse through the tree and run sorting algorithm implemented by child class
@@ -40,5 +41,14 @@ class BaseSorter(ABC):
 
 
 class Sorter(BaseSorter):
+    """Default sorter thich sorts by filenames (first numbers, then lower case letters, then upper case letters)"""
+
     def sorted(self, nodes: List[FileNode]) -> Iterable:
+        """Implementation of the abstract method
+
+        :param nodes: file nodes to be
+        :type nodes: List[FileNode]
+        :return: sorted file nodes
+        :rtype: Iterable
+        """
         return sorted(nodes, key=lambda node: node.get_filename())

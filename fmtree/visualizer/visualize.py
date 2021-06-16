@@ -1,15 +1,25 @@
+"""
+Visualize directory structure
+"""
+
 import os
 import sys
 import argparse
 import pathlib2
+from typing import Dict, List
 from fmtree.core.scraper import Scraper
 from fmtree.core.format import TreeCommandFormatter, HTMLFormatter, MarkdownContentFormatter
 from fmtree.core.filter import ExtensionFilter
 from fmtree.core.sorter import Sorter
 
 
-def validate_args(args_dict):
-    def count_args(keys):
+def validate_args(args_dict: Dict) -> None:
+    """Validate command line arguments
+
+    :param args_dict: dict containing command line arguments
+    :type args_dict: Dict
+    """
+    def count_args(keys: List[str]):
         count = 0
         for key in keys:
             count += 1 if args_dict[key] else 0
@@ -19,7 +29,13 @@ def validate_args(args_dict):
         raise ValueError(f"There can be only one style argument, choose from: {', '.join(keys)}")
 
 
-def main(args_dict: dict):
+def main(args_dict: Dict):
+    """Main function of fmtree.visualizer.visualize module
+
+    :param args_dict: parsed arguments as a dictionary
+    :type args_dict: Dict
+    :raises ValueError: no proper format set
+    """
     validate_args(args_dict)
     path = pathlib2.Path(args_dict['input']).absolute()
     scraper = Scraper(path, scrape_now=False, keep_empty_dir=False, depth=args_dict['depth'])

@@ -3,7 +3,7 @@ from fmtree.core.filter import ImageFilter
 from fmtree.core.format import TreeCommandFormatter
 import argparse
 import sys
-
+from typing import Dict
 import pathlib2
 from jinja2 import Environment, FileSystemLoader
 
@@ -20,7 +20,12 @@ jquery_cdn = """
 """
 
 
-def main(args):
+def main(args: Dict) -> None:
+    """Main function of fmtree.visualizer.image_dir
+
+    :param args: command line arguments in Dict
+    :type args: Dict
+    """
     if not args['quiet']:
         print("Arguments")
         for key, value in args.items():
