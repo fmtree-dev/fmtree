@@ -13,8 +13,6 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,7 +29,6 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -186,12 +183,12 @@
 <div class="section" id="module-fmtree.core.filter">
 <span id="fmtree-core-filter-module"></span><h2>fmtree.core.filter module<a class="headerlink" href="#module-fmtree.core.filter" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.BaseFileFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">BaseFileFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.BaseFileFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.BaseFileFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">BaseFileFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.BaseFileFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.filter.BaseFilter" title="fmtree.core.filter.BaseFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.filter.BaseFilter</span></code></a></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.BaseFileFilter.filter">
-<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.BaseFileFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.BaseFileFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.BaseFileFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>apply filter to iterable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -210,8 +207,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.BaseFileFilter.set_root_path">
-<span class="sig-name descname"><span class="pre">set_root_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.filter.BaseFileFilter.set_root_path" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.BaseFileFilter.set_root_path">
+<code class="sig-name descname"><span class="pre">set_root_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.filter.BaseFileFilter.set_root_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>root_path setter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -223,13 +220,13 @@
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.BaseFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">BaseFilter</span></span><a class="headerlink" href="#fmtree.core.filter.BaseFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.BaseFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">BaseFilter</span></code><a class="headerlink" href="#fmtree.core.filter.BaseFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Path filter abstract class</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.BaseFilter.filter">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.BaseFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.BaseFilter.filter">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.BaseFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>apply filter to iterable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -250,13 +247,13 @@
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.ExtensionFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">ExtensionFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.ExtensionFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.ExtensionFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">ExtensionFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.ExtensionFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.filter.BaseFileFilter</span></code></a></p>
 <p>A filter that only keeps files with given extensions and intermediate directories (non-files)</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.ExtensionFilter.filter">
-<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">fmtree.core.filter.T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">fmtree.core.filter.T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.filter.ExtensionFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.ExtensionFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.filter.ExtensionFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decide if the given path has one of the allowed extensions (self._extensions)
 :param items: Iterable, files to be filtered
 :return: filtered files with either directory or allowed extensions</p>
@@ -265,13 +262,13 @@
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.IdentityFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">IdentityFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.IdentityFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.IdentityFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">IdentityFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.IdentityFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.filter.BaseFileFilter</span></code></a></p>
 <p>Useless filter, return what it receives</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.IdentityFilter.filter">
-<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.IdentityFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.IdentityFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.IdentityFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>return what it gets directly, does no filtering</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -289,14 +286,14 @@
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.ImageFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">ImageFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">['.apng',</span> <span class="pre">'.avif',</span> <span class="pre">'.gif',</span> <span class="pre">'.jpg',</span> <span class="pre">'.jpeg',</span> <span class="pre">'.jfif',</span> <span class="pre">'.pjpeg',</span> <span class="pre">'.pjp',</span> <span class="pre">'.png',</span> <span class="pre">'.svg',</span> <span class="pre">'.webp',</span> <span class="pre">'.JPG']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.ImageFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.ImageFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">ImageFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_extensions</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">['.apng',</span> <span class="pre">'.avif',</span> <span class="pre">'.gif',</span> <span class="pre">'.jpg',</span> <span class="pre">'.jpeg',</span> <span class="pre">'.jfif',</span> <span class="pre">'.pjpeg',</span> <span class="pre">'.pjp',</span> <span class="pre">'.png',</span> <span class="pre">'.svg',</span> <span class="pre">'.webp',</span> <span class="pre">'.JPG']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.ImageFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.filter.ExtensionFilter" title="fmtree.core.filter.ExtensionFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.filter.ExtensionFilter</span></code></a></p>
 <p>A variant/wrapper of ExtensionFilter
 Filter based on commonly-seen image extensions (can be customized)</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.ImageFilter.filter">
-<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">fmtree.core.filter.T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">fmtree.core.filter.T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.filter.ImageFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.ImageFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.filter.ImageFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decide if the given path has one of the allowed extensions (self._extensions)
 :param items: Iterable, files to be filtered
 :return: filtered files with either directory or allowed extensions</p>
@@ -305,13 +302,13 @@ Filter based on commonly-seen image extensions (can be customized)</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.MarkdownFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">MarkdownFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.MarkdownFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.MarkdownFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">MarkdownFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.MarkdownFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.filter.BaseFileFilter</span></code></a></p>
 <p>A filter that keeps only markdown files and intermediate directories (non-files)</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.MarkdownFilter.filter">
-<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.MarkdownFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.MarkdownFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.MarkdownFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>apply filter to iterable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -332,13 +329,13 @@ Filter based on commonly-seen image extensions (can be customized)</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.filter.RegexFilter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></span><span class="sig-name descname"><span class="pre">RegexFilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.RegexFilter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.RegexFilter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.filter.</span></code><code class="sig-name descname"><span class="pre">RegexFilter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regex_patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_list</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.filter.RegexFilter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.filter.BaseFileFilter</span></code></a></p>
 <p>Filter with Regular Expression</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.filter.RegexFilter.filter">
-<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.RegexFilter.filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.filter.RegexFilter.filter">
+<code class="sig-name descname"><span class="pre">filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.filter.RegexFilter.filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take a path and decide whether it matches the regular expression self._pattern
 :param items: Iterable, files to be filtered
 :return: Iterable: filter out file paths that don’t match regular expression</p>
@@ -350,15 +347,15 @@ Filter based on commonly-seen image extensions (can be customized)</p>
 <div class="section" id="module-fmtree.core.format">
 <span id="fmtree-core-format-module"></span><h2>fmtree.core.format module<a class="headerlink" href="#module-fmtree.core.format" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.BaseFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">BaseFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.BaseFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">BaseFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Base Class of all formatters
 The reason the abstract method generate() isn’t a static method and root is required to initialize an instance of 
 this class is because there are a few other methods in this class that requires the object to remember the content</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.BaseFormatter.generate">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.BaseFormatter.generate">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -374,8 +371,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.BaseFormatter.get_stringio">
-<span class="sig-name descname"><span class="pre">get_stringio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.get_stringio" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.BaseFormatter.get_stringio">
+<code class="sig-name descname"><span class="pre">get_stringio</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.get_stringio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Getter for stringio. Content of generated string-form file tree is stored in self.stringio</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -388,8 +385,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.BaseFormatter.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.to_file" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.BaseFormatter.to_file">
+<code class="sig-name descname"><span class="pre">to_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.to_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Formatted file tree to file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -402,20 +399,20 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.BaseFormatter.to_stream">
-<span class="sig-name descname"><span class="pre">to_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">io.TextIOBase</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.to_stream" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.BaseFormatter.to_stream">
+<code class="sig-name descname"><span class="pre">to_stream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">io.TextIOBase</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.format.BaseFormatter.to_stream" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.GithubMarkdownContentFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">GithubMarkdownContentFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_readme_link</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_link</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_dir_link</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_md_ext</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_root_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link_dir_readme</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.GithubMarkdownContentFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.GithubMarkdownContentFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">GithubMarkdownContentFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_readme_link</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_link</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">full_dir_link</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_md_ext</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_root_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link_dir_readme</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.GithubMarkdownContentFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
 <p>GitHub Markdown style file tree formatter with richer options than regular MarkDown formatter</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.GithubMarkdownContentFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.GithubMarkdownContentFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.GithubMarkdownContentFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.GithubMarkdownContentFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -433,13 +430,12 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.HTMLFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">HTMLFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.HTMLFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.HTMLFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">HTMLFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.HTMLFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
-<p>HTML style file tree formatter</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.HTMLFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.HTMLFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.HTMLFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.HTMLFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -457,13 +453,13 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.ListFileFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">ListFileFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.ListFileFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.ListFileFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">ListFileFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.ListFileFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
 <p>List all file nodes, no styling at all</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.ListFileFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.ListFileFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.ListFileFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.ListFileFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -479,20 +475,20 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.ListFileFormatter.get_paths">
-<span class="sig-name descname"><span class="pre">get_paths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.format.ListFileFormatter.get_paths" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.ListFileFormatter.get_paths">
+<code class="sig-name descname"><span class="pre">get_paths</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.format.ListFileFormatter.get_paths" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.MarkdownContentFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">MarkdownContentFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.MarkdownContentFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.MarkdownContentFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">MarkdownContentFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.MarkdownContentFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
 <p>MarkDown style file tree formatter</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.MarkdownContentFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.MarkdownContentFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.MarkdownContentFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.MarkdownContentFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -510,13 +506,13 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.MarkdownLinkContentFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">MarkdownLinkContentFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.MarkdownLinkContentFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.MarkdownLinkContentFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">MarkdownLinkContentFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.MarkdownLinkContentFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
 <p>MarkDown style file tree formatter with MarkDown links</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.MarkdownLinkContentFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.MarkdownLinkContentFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.MarkdownLinkContentFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.MarkdownLinkContentFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -534,13 +530,13 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.TabFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">TabFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.TabFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TabFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">TabFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.TabFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
 <p>File Tree Structure by Indentation</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.TabFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.TabFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TabFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.TabFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -558,18 +554,18 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.format.TreeCommandFormatter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></span><span class="sig-name descname"><span class="pre">TreeCommandFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TreeCommandFormatter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.format.</span></code><code class="sig-name descname"><span class="pre">TreeCommandFormatter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.format.BaseFormatter" title="fmtree.core.format.BaseFormatter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.format.BaseFormatter</span></code></a></p>
 <p>File Tree Formatter that has GNU tree style format</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="fmtree.core.format.TreeCommandFormatter.branch">
-<span class="sig-name descname"><span class="pre">branch</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'│</span>&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.branch" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TreeCommandFormatter.branch">
+<code class="sig-name descname"><span class="pre">branch</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'│</span>&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.branch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.format.TreeCommandFormatter.generate">
-<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.generate" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TreeCommandFormatter.generate">
+<code class="sig-name descname"><span class="pre">generate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">_io.StringIO</span><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a string form file tree given the root to the tree</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -585,18 +581,18 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="fmtree.core.format.TreeCommandFormatter.last">
-<span class="sig-name descname"><span class="pre">last</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'└──</span> <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.last" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TreeCommandFormatter.last">
+<code class="sig-name descname"><span class="pre">last</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'└──</span> <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.last" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="fmtree.core.format.TreeCommandFormatter.space">
-<span class="sig-name descname"><span class="pre">space</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.space" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TreeCommandFormatter.space">
+<code class="sig-name descname"><span class="pre">space</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'</span>&#160;&#160;&#160; <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.space" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="fmtree.core.format.TreeCommandFormatter.tee">
-<span class="sig-name descname"><span class="pre">tee</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'├──</span> <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.tee" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.format.TreeCommandFormatter.tee">
+<code class="sig-name descname"><span class="pre">tee</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'├──</span> <span class="pre">'</span></em><a class="headerlink" href="#fmtree.core.format.TreeCommandFormatter.tee" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -605,12 +601,12 @@ this class is because there are a few other methods in this class that requires 
 <div class="section" id="module-fmtree.core.node">
 <span id="fmtree-core-node-module"></span><h2>fmtree.core.node module<a class="headerlink" href="#module-fmtree.core.node" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.node.BaseNode">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.node.</span></span><span class="sig-name descname"><span class="pre">BaseNode</span></span><a class="headerlink" href="#fmtree.core.node.BaseNode" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.BaseNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.node.</span></code><code class="sig-name descname"><span class="pre">BaseNode</span></code><a class="headerlink" href="#fmtree.core.node.BaseNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.BaseNode.to_bytes">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bytes</span><a class="headerlink" href="#fmtree.core.node.BaseNode.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.BaseNode.to_bytes">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_bytes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bytes</span><a class="headerlink" href="#fmtree.core.node.BaseNode.to_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialize Node</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -626,8 +622,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.BaseNode.to_stream">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">to_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.node.BaseNode.to_stream" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.BaseNode.to_stream">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">to_stream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.node.BaseNode.to_stream" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialize Node and dump to given stream</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -642,13 +638,13 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.node.</span></span><span class="sig-name descname"><span class="pre">FileNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.node.FileNode" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.node.</span></code><code class="sig-name descname"><span class="pre">FileNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib2.Path</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.node.FileNode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.node.BaseNode" title="fmtree.core.node.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.node.BaseNode</span></code></a></p>
 <p>File Node Abstract Class</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_children">
-<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.node.FileNode.get_children" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_children">
+<code class="sig-name descname"><span class="pre">get_children</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.node.FileNode.get_children" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get children nodes of current file node</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -661,8 +657,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_depth">
-<span class="sig-name descname"><span class="pre">get_depth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_depth" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_depth">
+<code class="sig-name descname"><span class="pre">get_depth</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">int</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_depth" title="Permalink to this definition">¶</a></dt>
 <dd><p>FileNode depth relative to root getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -675,8 +671,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_filename">
-<span class="sig-name descname"><span class="pre">get_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_filename" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_filename">
+<code class="sig-name descname"><span class="pre">get_filename</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filename getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -689,8 +685,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_id">
-<span class="sig-name descname"><span class="pre">get_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.UniqueFileIdentifier" title="fmtree.core.node.UniqueFileIdentifier"><span class="pre">fmtree.core.node.UniqueFileIdentifier</span></a><a class="headerlink" href="#fmtree.core.node.FileNode.get_id" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_id">
+<code class="sig-name descname"><span class="pre">get_id</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.UniqueFileIdentifier" title="fmtree.core.node.UniqueFileIdentifier"><span class="pre">fmtree.core.node.UniqueFileIdentifier</span></a><a class="headerlink" href="#fmtree.core.node.FileNode.get_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>FileNode id getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -703,8 +699,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_path">
-<span class="sig-name descname"><span class="pre">get_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_path" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_path">
+<code class="sig-name descname"><span class="pre">get_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>file path getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -717,8 +713,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_relative_path">
-<span class="sig-name descname"><span class="pre">get_relative_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_relative_path" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_relative_path">
+<code class="sig-name descname"><span class="pre">get_relative_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_relative_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>file node’s relative path to root getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -731,8 +727,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_root">
-<span class="sig-name descname"><span class="pre">get_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_root" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_root">
+<code class="sig-name descname"><span class="pre">get_root</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">pathlib2.Path</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_root" title="Permalink to this definition">¶</a></dt>
 <dd><p>root getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -745,8 +741,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.get_stat">
-<span class="sig-name descname"><span class="pre">get_stat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">os.stat_result</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_stat" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.get_stat">
+<code class="sig-name descname"><span class="pre">get_stat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">os.stat_result</span><a class="headerlink" href="#fmtree.core.node.FileNode.get_stat" title="Permalink to this definition">¶</a></dt>
 <dd><p>file node stat getter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -759,8 +755,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.is_dir">
-<span class="sig-name descname"><span class="pre">is_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#fmtree.core.node.FileNode.is_dir" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.is_dir">
+<code class="sig-name descname"><span class="pre">is_dir</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#fmtree.core.node.FileNode.is_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if self is a directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -773,8 +769,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.is_file">
-<span class="sig-name descname"><span class="pre">is_file</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#fmtree.core.node.FileNode.is_file" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.is_file">
+<code class="sig-name descname"><span class="pre">is_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#fmtree.core.node.FileNode.is_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if self is a file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -787,8 +783,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.set_children">
-<span class="sig-name descname"><span class="pre">set_children</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.node.FileNode.set_children" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.set_children">
+<code class="sig-name descname"><span class="pre">set_children</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.node.FileNode.set_children" title="Permalink to this definition">¶</a></dt>
 <dd><p>children attribute setter</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -798,8 +794,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.to_bytes">
-<span class="sig-name descname"><span class="pre">to_bytes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bytes</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.to_bytes">
+<code class="sig-name descname"><span class="pre">to_bytes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">bytes</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_bytes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialize Node</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -815,8 +811,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.to_dict">
-<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_dict" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.to_dict">
+<code class="sig-name descname"><span class="pre">to_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate dict style file node tree using self as root node</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -829,8 +825,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.to_json">
-<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_json" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.to_json">
+<code class="sig-name descname"><span class="pre">to_json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate json style file node tree using self as root node</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -846,8 +842,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.node.FileNode.to_stream">
-<span class="sig-name descname"><span class="pre">to_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_stream" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.FileNode.to_stream">
+<code class="sig-name descname"><span class="pre">to_stream</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">io</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.node.FileNode.to_stream" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialize Node and dump to given stream</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -862,8 +858,8 @@ this class is because there are a few other methods in this class that requires 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.node.UniqueFileIdentifier">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.node.</span></span><span class="sig-name descname"><span class="pre">UniqueFileIdentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.node.UniqueFileIdentifier" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.node.UniqueFileIdentifier">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.node.</span></code><code class="sig-name descname"><span class="pre">UniqueFileIdentifier</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.node.UniqueFileIdentifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Unique File Identifier
 Used to identify a unique file within a file system
@@ -876,12 +872,12 @@ detecting duplicate files</p>
 <div class="section" id="module-fmtree.core.scraper">
 <span id="fmtree-core-scraper-module"></span><h2>fmtree.core.scraper module<a class="headerlink" href="#module-fmtree.core.scraper" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.scraper.BaseScraper">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.scraper.</span></span><span class="sig-name descname"><span class="pre">BaseScraper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><span class="pre">fmtree.core.filter.BaseFileFilter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.scraper.BaseScraper" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.BaseScraper">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.scraper.</span></code><code class="sig-name descname"><span class="pre">BaseScraper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><span class="pre">fmtree.core.filter.BaseFileFilter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.scraper.BaseScraper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.scraper.BaseScraper.add_filter">
-<span class="sig-name descname"><span class="pre">add_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><span class="pre">fmtree.core.filter.BaseFileFilter</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.add_filter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.BaseScraper.add_filter">
+<code class="sig-name descname"><span class="pre">add_filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><span class="pre">fmtree.core.filter.BaseFileFilter</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.add_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a filter object to this Scraper</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -891,8 +887,8 @@ detecting duplicate files</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.scraper.BaseScraper.get_tree">
-<span class="sig-name descname"><span class="pre">get_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.get_tree" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.BaseScraper.get_tree">
+<code class="sig-name descname"><span class="pre">get_tree</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.get_tree" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>root node of the scraped file tree</p>
@@ -904,8 +900,8 @@ detecting duplicate files</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.scraper.BaseScraper.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.run" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.BaseScraper.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>scrape the given path and form a tree structure</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -921,21 +917,21 @@ detecting duplicate files</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.scraper.BaseScraper.scrape">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">scrape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.scrape" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.BaseScraper.scrape">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">scrape</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.scraper.BaseScraper.scrape" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.scraper.Scraper">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.scraper.</span></span><span class="sig-name descname"><span class="pre">Scraper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><span class="pre">fmtree.core.filter.BaseFileFilter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.scraper.Scraper" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.Scraper">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.scraper.</span></code><code class="sig-name descname"><span class="pre">Scraper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.filter.BaseFileFilter" title="fmtree.core.filter.BaseFileFilter"><span class="pre">fmtree.core.filter.BaseFileFilter</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrape_now</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_empty_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fmtree.core.scraper.Scraper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.scraper.BaseScraper" title="fmtree.core.scraper.BaseScraper"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.scraper.BaseScraper</span></code></a></p>
 <p>Scraper of file system
 Scrape a given path with given properties such as filters, sort functions…, and turn it into a tree structure</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.scraper.Scraper.scrape">
-<span class="sig-name descname"><span class="pre">scrape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.scraper.Scraper.scrape" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.scraper.Scraper.scrape">
+<code class="sig-name descname"><span class="pre">scrape</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.scraper.Scraper.scrape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use recursion to scrape a given path and return a tree structure
 :param path: target file path to scrape
 :param depth: depth of node with respect to the root node
@@ -948,21 +944,21 @@ Scrape a given path with given properties such as filters, sort functions…, an
 <div class="section" id="module-fmtree.core.sorter">
 <span id="fmtree-core-sorter-module"></span><h2>fmtree.core.sorter module<a class="headerlink" href="#module-fmtree.core.sorter" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.sorter.BaseSorter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.sorter.</span></span><span class="sig-name descname"><span class="pre">BaseSorter</span></span><a class="headerlink" href="#fmtree.core.sorter.BaseSorter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.sorter.BaseSorter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.sorter.</span></code><code class="sig-name descname"><span class="pre">BaseSorter</span></code><a class="headerlink" href="#fmtree.core.sorter.BaseSorter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
 <p>Base Sorter Class for sorting child nodes</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.sorter.BaseSorter.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><a class="headerlink" href="#fmtree.core.sorter.BaseSorter.run" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.sorter.BaseSorter.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><a class="headerlink" href="#fmtree.core.sorter.BaseSorter.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Traverse through the tree and run sorting algorithm implemented by child class
 :param root_node: root node
 :return: another tree root node</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.sorter.BaseSorter.sorted">
-<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">sorted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.sorter.BaseSorter.sorted" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.sorter.BaseSorter.sorted">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">sorted</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#fmtree.core.sorter.BaseSorter.sorted" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract method for sorting children nodes
 :param nodes: a list of nodes which is children of another node
 :return: a list of sorted nodes</p>
@@ -971,13 +967,13 @@ Scrape a given path with given properties such as filters, sort functions…, an
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="fmtree.core.sorter.Sorter">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fmtree.core.sorter.</span></span><span class="sig-name descname"><span class="pre">Sorter</span></span><a class="headerlink" href="#fmtree.core.sorter.Sorter" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.sorter.Sorter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">fmtree.core.sorter.</span></code><code class="sig-name descname"><span class="pre">Sorter</span></code><a class="headerlink" href="#fmtree.core.sorter.Sorter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#fmtree.core.sorter.BaseSorter" title="fmtree.core.sorter.BaseSorter"><code class="xref py py-class docutils literal notranslate"><span class="pre">fmtree.core.sorter.BaseSorter</span></code></a></p>
 <p>Default sorter thich sorts by filenames (first numbers, then lower case letters, then upper case letters)</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="fmtree.core.sorter.Sorter.sorted">
-<span class="sig-name descname"><span class="pre">sorted</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.sorter.Sorter.sorted" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.sorter.Sorter.sorted">
+<code class="sig-name descname"><span class="pre">sorted</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><a class="headerlink" href="#fmtree.core.sorter.Sorter.sorted" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the abstract method</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -998,8 +994,8 @@ Scrape a given path with given properties such as filters, sort functions…, an
 <div class="section" id="module-fmtree.core.utils">
 <span id="fmtree-core-utils-module"></span><h2>fmtree.core.utils module<a class="headerlink" href="#module-fmtree.core.utils" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="fmtree.core.utils.reproduce_fs_tree">
-<span class="sig-prename descclassname"><span class="pre">fmtree.core.utils.</span></span><span class="sig-name descname"><span class="pre">reproduce_fs_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.utils.reproduce_fs_tree" title="Permalink to this definition">¶</a></dt>
+<dt id="fmtree.core.utils.reproduce_fs_tree">
+<code class="sig-prename descclassname"><span class="pre">fmtree.core.utils.</span></code><code class="sig-name descname"><span class="pre">reproduce_fs_tree</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_dir</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">pathlib2.Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#fmtree.core.node.FileNode" title="fmtree.core.node.FileNode"><span class="pre">fmtree.core.node.FileNode</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#fmtree.core.utils.reproduce_fs_tree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a tree, recreate the tree structure in the file system
 :param target_dir: directory the structure is going to be reproduced in
 :param root: tree root node
