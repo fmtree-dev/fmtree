@@ -24,9 +24,19 @@ def validate_args(args_dict: Dict) -> None:
         for key in keys:
             count += 1 if args_dict[key] else 0
         return count
+
+    # validate style
     keys = ['tree', 'markdown', 'html']
-    if count_args(keys) != 1:
+    if count_args(keys) == 0:
+        args_dict['tree'] = True        # if no style is set, use tree
+    elif count_args(keys) != 1:
         raise ValueError(f"There can be only one style argument, choose from: {', '.join(keys)}")
+
+    # validate output location
+
+    keys = ['stdout', 'stderr', 'output']
+    if count_args(keys) == 0:
+        args_dict['stdout'] = True  # if no output location is set, use stdout
 
 
 def main(args_dict: Dict):
@@ -39,7 +49,8 @@ def main(args_dict: Dict):
     validate_args(args_dict)
     path = pathlib2.Path(args_dict['input']).absolute()
     scraper = Scraper(path, scrape_now=False, keep_empty_dir=False, depth=args_dict['depth'])
-    scraper.add_filter(ExtensionFilter(extensions=['.md']))
+    if len(args_dict['ext']) != 0:
+        scraper.add_filter(ExtensionFilter(extensions=args_dict['ext']))
     scraper.run()
     sorter = Sorter()
     tree = sorter(scraper.get_tree())
@@ -64,7 +75,8 @@ def main(args_dict: Dict):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("fmtree visualizer argument parser")
     parser.add_argument('--debug', action='store_true', help='debug mode')
-    parser.add_argument('-i', '--input', default=os.getcwd(), help='input path (path to format)')
+    parser.add_argument('input', default='.', help='input path')
+
     # output location, there can be multiple output
     parser.add_argument('--stdout', action='store_true', help='output to stdout')
     parser.add_argument('--stderr', action='store_true', help='output to stderr')
@@ -75,7 +87,7 @@ if __name__ == '__main__':
     parser.add_argument('--html', action='store_true', help='html list style output')
 
     # filter
-    parser.add_argument("--ext", nargs="+", default=["md"])
+    parser.add_argument("--ext", nargs="+", default=[])
     parser.add_argument('-d', '--depth', type=int, default=10, help="Directory depth to parse")
     args = parser.parse_args()
     if args.debug:

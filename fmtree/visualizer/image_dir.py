@@ -63,7 +63,7 @@ def main(args: Dict) -> None:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser("Fmtree Visualizer Parser")
-    parser.add_argument('input', help='input path')
+    parser.add_argument('input', default='.', help='input path')
     parser.add_argument('-o', '--output', help='output directory to save html')
     parser.add_argument('-q', '--quiet', action='store_true', help="whether to print out the directory")
     parser.add_argument('-d', '--depth', type=int, default=10, help="Directory depth to parse")

@@ -168,6 +168,33 @@ class MarkdownContentFormatter(BaseFormatter):
         return self.stringio
 
 
+class HTMLFormatter(BaseFormatter):
+    def __init__(self, root: FileNode) -> None:
+        super(HTMLFormatter, self).__init__(root)
+
+    def generate(self) -> io.StringIO:
+        def iterate(node_: FileNode) -> Iterable:
+            prefix_tabs = (node_.get_depth()) * '\t'
+            if node_.is_file():
+                yield f"{prefix_tabs}<li>{node_.get_filename()}</li>"
+            else:
+                yield f"{prefix_tabs}\t<li>{node_.get_filename()}</li>"
+                yield f"{prefix_tabs}\t<ul>"
+
+            children = node_.get_children()
+            for child_node in children:
+                yield from iterate(child_node)
+
+            if not node_.is_file():
+                yield f"{prefix_tabs}\t</ul>"
+
+        self.stringio.write("<ul>\n")
+        for line in iterate(self.root):
+            self.stringio.write(line + "\n")
+        self.stringio.write("</ul>\n")
+        return self.stringio
+
+
 class MarkdownLinkContentFormatter(BaseFormatter):
     """MarkDown style file tree formatter with MarkDown links"""
     def __init__(self, root: FileNode) -> None:

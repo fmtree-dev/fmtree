@@ -139,8 +139,6 @@
       const root_folder = data.filename;
       const dataMap = new Map();
       const constructNode = (node) => {
-        let img_path = node.path.replace('\\\\', '/');
-        img_path = img_path.replace('\\', '/');
         if (node.children && node.children.length !== 0) {
           const container = $('<div />')
             .attr('id', `id-${node.id}`)
@@ -153,9 +151,9 @@
             container.append(constructNode(child));
           }
           const details_summary =
-            img_path === '.'
+            node.path === '.'
               ? root_folder
-              : `${root_folder} / ${img_path}`;
+              : node.path;
           const details = $(
             `<details><summary>${details_summary}</summary></details>`
           );
@@ -163,11 +161,10 @@
           return details;
         } else {
           dataMap[node.id] = node;
-          const img = $('<img />')
-            .attr('src', img_path)
+          return $('<img />')
+            .attr('src',  node.path)
             .attr('id', `id-${node.id}`)
             .addClass('img-thumbnail');
-          return img;
         }
       };
       $('#root').append(constructNode(data));
@@ -195,10 +192,8 @@
         const id = target.id.substring(3, target.id.length)
         const imgData = dataMap[id];
         $("#img-details-modal-body").html("");
-        let img_path = imgData.path.replace('\\\\', '/');
-        img_path = img_path.replace('\\', '/');
         const img = $('<img />')
-            .attr('src', img_path)
+            .attr('src', imgData.path)
             .attr('id', `id-${id}-detail`)
             .addClass('img-thumbnail');
         $("#img-details-modal-body").append(img)
@@ -207,6 +202,24 @@
         $("#img-details-modal-body").append(`<p><strong>File Size: </strong>${bytesToSize(imgData.st_size)}</p>`)
         imgDetailModal.show();
       })
+
+      // keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowUp') {
+          $("#image-width-input").val(parseInt($("#image-width-input").val()) + 1)
+          $("#image-width-input").trigger('input');
+        } else if (e.code === 'ArrowDown') {
+          $("#image-width-input").val(parseInt($("#image-width-input").val()) - 1)
+          $("#image-width-input").trigger('input');
+        } else if (e.code === 'KeyS') {
+          document.getElementById("toggle").checked = !document.getElementById("toggle").checked;
+          if (document.getElementById("toggle").checked) {
+            $('details').attr('open', true);
+          } else {
+            $('details').attr('open', false);
+          }
+        }
+      });
     </script>
   </body>
 </html>
