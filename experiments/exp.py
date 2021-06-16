@@ -5,13 +5,14 @@ from typing import List, Iterable
 from functools import cmp_to_key
 
 from fmtree.core.scraper import Scraper
-from fmtree.core.filter import MarkdownFilter
+from fmtree.core.filter import MarkdownFilter, ExtensionFilter, RegexFilter
 from fmtree.core.format import GithubMarkdownContentFormatter
 from fmtree.core import sorter
 from fmtree.core.node import FileNode
 
-path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
+# path = pathlib2.Path("/Users/huakunshen/Local/Dev/OSCP")
 path = pathlib2.Path("/home/huakun/Insync/huakun.shen@gmail.com/Google Drive/OSCP")
+# path = pathlib2.Path("/home/huakun/Desktop")
 
 
 class OSCPExerciseSorter(sorter.BaseSorter):
@@ -54,6 +55,8 @@ class OSCPExerciseSorter(sorter.BaseSorter):
 if __name__ == '__main__':
     scraper = Scraper(path, scrape_now=False, keep_empty_dir=False)
     scraper.add_filter(MarkdownFilter())
+    # scraper.add_filter(ExtensionFilter(extensions=['md']))
+    # scraper.add_filter(RegexFilter(regex_patterns=['.*\.md']))
     scraper.run()
     sorter_ = OSCPExerciseSorter()
     tree = sorter_(scraper.get_tree())

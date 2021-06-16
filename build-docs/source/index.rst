@@ -10,9 +10,9 @@ Welcome to fmtree's documentation!
    :maxdepth: 4
    :caption: Contents:
 
-   docs/installation
-   docs/sample
-   srcdoc/fmtree
+   installation
+   sample
+   modules
 
 Indices and tables
 ==================
