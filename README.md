@@ -124,7 +124,7 @@ optional arguments:
 
 #### Sample Usage
 ```bash
-python -m visualizer.visualize  -i '/home/user/images' --depth 5 --ext .jpg .png --stdout --debug --html
+python -m fmtree.visualizer.visualize -i '/home/user/images' --depth 5 --ext .jpg .png --stdout --debug --html
 ```
 
 ### fmtree.visualizer.image_dir
@@ -161,7 +161,7 @@ optional arguments:
 
 #### Sample Usage
 ```bash
-python -m visualizer.image_dir --cdn /home/user/images
+python -m fmtree.visualizer.image_dir --cdn /home/user/images
 ```
 
 #### Inspiration
