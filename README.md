@@ -1,4 +1,4 @@
-# FileTree
+# fmtree
 
 [![Build Documentation](https://github.com/fmtree-dev/fmtree/actions/workflows/build-docs.yml/badge.svg)](https://github.com/fmtree-dev/fmtree/actions/workflows/build-docs.yml)
 [![Pytest](https://github.com/fmtree-dev/fmtree/actions/workflows/python-package.yml/badge.svg)](https://github.com/fmtree-dev/fmtree/actions/workflows/python-package.yml)
