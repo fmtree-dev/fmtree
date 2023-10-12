@@ -21,10 +21,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    install_requires=[
-        'pathlib2==2.3.5',
-        'Jinja2==2.11.3'
-    ],
+    install_requires=[],
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
     package_data={
