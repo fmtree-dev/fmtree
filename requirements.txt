@@ -1,3 +1,5 @@
 pathlib2==2.3.7.post1
 Jinja2==3.1.2
 pytest==7.4.2
+sphinx-rtd-theme==0.5.1
+Sphinx==7.2.6
