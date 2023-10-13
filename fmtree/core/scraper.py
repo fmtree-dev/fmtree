@@ -74,10 +74,10 @@ class Scraper(BaseScraper):
         :param filters: filters for filtering out unwanted files
         :param scrape_now: start scraping right after initialization
         """
-        super(Scraper, self).__init__(
-            path, scrape_now=scrape_now, filters=filters)
         self._keep_empty_dir = keep_empty_dir
         self.depth_limit = depth
+        super(Scraper, self).__init__(
+            path, scrape_now=scrape_now, filters=filters)
         if not self.root.exists():
             raise ValueError(f"Path Not Exist: {str(self.root)}")
 
