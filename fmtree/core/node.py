@@ -5,7 +5,7 @@ import stat
 import pickle
 import pathlib2
 from abc import ABC, abstractmethod
-from typing import List, Union, io, Dict
+from typing import List, Union, io, Dict, Generator
 import json
 
 
@@ -23,7 +23,7 @@ class UniqueFileIdentifier:
 
         :param path: a file path of type pathlib2.Path
         :type path: pathlib2.Path
-        """        
+        """
         self.st_dev = path.stat().st_dev
         self.st_ino = path.stat().st_ino
 
@@ -32,7 +32,7 @@ class UniqueFileIdentifier:
 
         :return: concatenate st_dev and st_ino
         :rtype: str
-        """        
+        """
         return str(self.st_dev) + str(self.st_ino)
 
     def __eq__(self, other: UniqueFileIdentifier) -> bool:
@@ -43,7 +43,7 @@ class UniqueFileIdentifier:
         :type other: UniqueFileIdentifier
         :return: whether 2 file identifiers are identical
         :rtype: bool
-        """        
+        """
         return self.st_dev == other.st_dev and self.st_ino == other.st_ino
 
     def __hash__(self) -> int:
@@ -51,7 +51,7 @@ class UniqueFileIdentifier:
 
         :return: hash of tuple(std_dev, st_ino)
         :rtype: int
-        """        
+        """
         return hash((self.st_dev, self.st_ino))
 
 
@@ -63,7 +63,7 @@ class BaseNode(ABC):
         :raises NotImplementedError: Abstract method must be implemented in child class
         :return: string describing Node
         :rtype: str
-        """        
+        """
         raise NotImplementedError
 
     def __copy__(self) -> BaseNode:
@@ -71,7 +71,7 @@ class BaseNode(ABC):
 
         :return: the shallow copy
         :rtype: BaseNode
-        """        
+        """
         cls = self.__class__
         result = cls.__new__(cls)
         result.__dict__.update(self.__dict__)
@@ -84,7 +84,7 @@ class BaseNode(ABC):
         :type memo: Dict
         :return: A deepcopy of self
         :rtype: BaseNode
-        """        
+        """
         cls = self.__class__
         result = cls.__new__(cls)
         memo[id(self)] = result
@@ -99,7 +99,7 @@ class BaseNode(ABC):
         :raises NotImplementedError: Implement this abstract method in child classes
         :return: serialized node (binary data)
         :rtype: bytes
-        """        
+        """
         raise NotImplementedError
 
     @abstractmethod
@@ -109,7 +109,7 @@ class BaseNode(ABC):
         :param stream: stream to output to
         :type stream: io
         :raises NotImplementedError: Implement this abstract method in child classes
-        """        
+        """
         raise NotImplementedError
 
 
@@ -118,8 +118,13 @@ class FileNode(BaseNode):
     File Node Abstract Class
     """
 
-    def __init__(self, path: pathlib2.Path, depth: int = None, root: pathlib2.Path = None,
-                 children: Union[List, None] = None) -> None:
+    def __init__(
+        self,
+        path: pathlib2.Path,
+        depth: int = None,
+        root: pathlib2.Path = None,
+        children: Union[List, None] = None,
+    ) -> None:
         """FileNode Initializer
 
         :param path: file path
@@ -130,11 +135,10 @@ class FileNode(BaseNode):
         :type root: pathlib2.Path, optional
         :param children: List of Node when current node is a directory, None if current node is a file, defaults to None
         :type children: Union[List, None], optional
-        """                 
+        """
         self._path = path
         self._root = root
-        self._relative_path = self._path.relative_to(
-            self._root) if self._root else None
+        self._relative_path = self._path.relative_to(self._root) if self._root else None
         self._depth = depth
         self._filename = path.name
         self._stat = path.stat()
@@ -146,7 +150,7 @@ class FileNode(BaseNode):
 
         :return: absolute path of current file node in string form
         :rtype: str
-        """        
+        """
         return str(self._path.absolute())
 
     def __eq__(self, other: FileNode) -> bool:
@@ -164,7 +168,7 @@ class FileNode(BaseNode):
 
         :return: child file nodes
         :rtype: List[FileNode]
-        """        
+        """
         return self._children
 
     def set_children(self, children: List[FileNode]) -> None:
@@ -172,7 +176,7 @@ class FileNode(BaseNode):
 
         :param children: child nodes of a file node
         :type children: List[FileNode]
-        """        
+        """
         self._children = children
 
     def get_path(self) -> pathlib2.Path:
@@ -180,7 +184,7 @@ class FileNode(BaseNode):
 
         :return: file path of this file node
         :rtype: pathlib2.Path
-        """        
+        """
         return self._path
 
     def get_filename(self) -> str:
@@ -188,7 +192,7 @@ class FileNode(BaseNode):
 
         :return: filename of this file node
         :rtype: str
-        """        
+        """
         return self._filename
 
     def get_stat(self) -> os.stat_result:
@@ -196,7 +200,7 @@ class FileNode(BaseNode):
 
         :return: stat of this file node
         :rtype: os.stat_result
-        """        
+        """
         return self._stat
 
     def get_id(self) -> UniqueFileIdentifier:
@@ -204,7 +208,7 @@ class FileNode(BaseNode):
 
         :return: UniqueFileIdentifier (id) of this file node
         :rtype: UniqueFileIdentifier
-        """        
+        """
         return self._id
 
     def get_depth(self) -> int:
@@ -212,7 +216,7 @@ class FileNode(BaseNode):
 
         :return: depth of this file node with respect to root path
         :rtype: int
-        """        
+        """
         return self._depth
 
     def get_root(self) -> pathlib2.Path:
@@ -220,7 +224,7 @@ class FileNode(BaseNode):
 
         :return: node's root path
         :rtype: pathlib2.Path
-        """        
+        """
         return self._root
 
     def get_relative_path(self) -> pathlib2.Path:
@@ -228,7 +232,7 @@ class FileNode(BaseNode):
 
         :return: file node's relative path
         :rtype: pathlib2.Path
-        """        
+        """
         return self._relative_path
 
     def is_dir(self) -> bool:
@@ -236,7 +240,7 @@ class FileNode(BaseNode):
 
         :return: whether this is a directory FileNode
         :rtype: bool
-        """        
+        """
         return stat.S_ISDIR(self._stat.st_mode)
 
     def is_file(self) -> bool:
@@ -244,7 +248,7 @@ class FileNode(BaseNode):
 
         :return: whether this is a file FileNode
         :rtype: bool
-        """        
+        """
         return stat.S_ISREG(self._stat.st_mode)
 
     def to_bytes(self) -> bytes:
@@ -258,20 +262,20 @@ class FileNode(BaseNode):
 
         :return: dict representing file tree rooted at self
         :rtype: Dict
-        """        
+        """
         children = [child.to_dict() for child in self._children]
         return {
-            'id': str(self._id),
-            'depth': self._depth,
-            'filename': self._filename,
-            'path': str(self._path),
-            'relative_path': str(self._relative_path),
-            'root': str(self._root),
-            'children': children,
-            'st_size': self._stat.st_size
+            "id": str(self._id),
+            "depth": self._depth,
+            "filename": self._filename,
+            "path": str(self._path),
+            "relative_path": str(self._relative_path),
+            "root": str(self._root),
+            "children": children,
+            "st_size": self._stat.st_size,
         }
 
-    def to_json(self, indent:int=0) -> str:
+    def to_json(self, indent: int = 0) -> str:
         """Generate json style file node tree using self as root node
 
         :param indent: number of space for indent, defaults to None
@@ -280,3 +284,27 @@ class FileNode(BaseNode):
         :rtype: str
         """
         return json.dumps(self.to_dict(), indent=indent)
+
+    def walk(
+        self, recursive: bool = False, no_dir: bool = False
+    ) -> Generator[FileNode]:
+        """Walk through the children (recursively)
+
+        >>> scraper = Scraper(Path("/Users/hacker/Documents/Learn/brain/docs"), filters=[MarkdownFilter()], scrape_now=True)
+        >>> for node in scraper.get_tree().walk(recursive=True):
+                print(node.get_path())
+        
+        :param recursive: Recursive Search, defaults to False
+        :type recursive: bool, optional
+        :param no_dir: Don't consider directory, defaults to False
+        :type no_dir: bool, optional
+        :yield: A file node
+        :rtype: Generator[FileNode]
+        """
+        if not no_dir:
+            yield self
+        for child in self._children:
+            if child.is_dir() and recursive:
+                yield from child.walk(recursive, no_dir)
+            elif child.is_file():
+                yield child

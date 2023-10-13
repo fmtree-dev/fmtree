@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="fmtree",
-    version="0.1.4",
+    version="0.2.0",
     author="Huakun Shen",
     author_email="huakun.shen@huakunshen.com",
     description="Scrape File System and output in different formats",
@@ -23,7 +23,7 @@ setuptools.setup(
     ],
     install_requires=[],
     packages=setuptools.find_packages(),
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     package_data={
         'fmtree': [
             "visualizer/template/*",
