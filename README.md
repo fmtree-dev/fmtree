@@ -189,3 +189,12 @@ The python script is in [./fmtree/image/dup.py](./fmtree/image/dup.py)
 python -m fmtree.image.dup ~/Downloads/images --output_dir ./out --remove_inplace --output_json dup.json -m perceptual-hash
 ```
 
+## Documentation
+
+https://fmtree-dev.github.io/fmtree/
+
+```bash
+sphinx-build -b html build-docs/source docs 
+```
+
+This command will generate docs in `docs` folder, push it and the content will be deployed to GitHub Pages.
