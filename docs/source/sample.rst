@@ -35,3 +35,15 @@ Sample Code
                 return nodes
             else:
                 return sorted(nodes, key=lambda node: node.get_filename())
+
+
+===============
+Duplicate Image
+===============
+
+This command can search for duplicate in a directory and remove them.
+
+.. code-block:: bash
+
+    python -m fmtree.image.dup ~/Downloads/images --output_dir ./out --remove_inplace --output_json dup.json -m perceptual-hash
+

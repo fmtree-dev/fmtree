@@ -4,7 +4,7 @@ name: Deploy Docs to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: ["master", "docs"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -44,6 +44,7 @@ jobs:
         run: |
           cd docs
           rm -rf code-doc && sphinx-apidoc -o source/code-doc ../fmtree
+          make clean
           make html
       - name: Setup Pages
         uses: actions/configure-pages@v3
