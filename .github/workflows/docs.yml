@@ -43,9 +43,10 @@ jobs:
       - name: Build Docs
         run: |
           cd docs
-          rm -rf code-doc && sphinx-apidoc -o source/code-doc ../fmtree
+          rm -rf code-doc && sphinx-apidoc -o code-doc ../fmtree
           make clean
           make html
+          ls _build/html
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
