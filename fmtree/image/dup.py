@@ -17,6 +17,8 @@ from collections import defaultdict
 import shutil
 from enum import Enum
 
+DEFAULT_NUM_WORKERS = max(mp.cpu_count() - 1, 1)
+
 
 class HashMethod(Enum):
     AverageHashing = 'avg-hash'
@@ -110,22 +112,33 @@ def get_hash_function(hash_method: HashMethod) -> hash_function_method_union:
         raise ValueError("Invalid Hash Method: ", hash_method)
 
 
+class DuplicateImageSearcher:
+    def __init__(self, path: Path, hash_func: hash_function_method_union, num_workers: int = DEFAULT_NUM_WORKERS):
+        self.path = path
+        self.image_hash_dict: defaultdict[np.ndarray, list[Path]] = defaultdict(list)
+        self.hash_func = hash_func
+        self.num_workers = num_workers
+
+    def run(self):
+        scraper = Scraper(args.path, scrape_now=False, keep_empty_dir=False)
+        # add filter
+        scraper.add_filter(filter_=ImageFilter())
+        # run scraper
+        scraper.run()
+        with mp.Pool(self.num_workers) as p:
+            nodes = list(scraper.get_tree().walk(recursive=True, no_dir=True))
+            hasher = HashComputer(self.hash_func)
+            for file_node, hash_ in tqdm(p.imap_unordered(hasher, nodes), total=len(nodes)):
+                self.image_hash_dict[hash_].append(file_node.get_path())
+
+
 def main(args: ArgsConfig):
     print(f"Searching Duplicate Images in Directory: {args.path}; with hash function: {args.hash_method}")
-    scraper = Scraper(args.path, scrape_now=False, keep_empty_dir=False)
-    # add filter
-    scraper.add_filter(filter_=ImageFilter())
-    # run scraper
-    scraper.run()
-    # image_hashes: list[ImageHash] = []
-    image_hash_dict: defaultdict[np.ndarray, list[Path]] = defaultdict(list)
-
-    with mp.Pool(args.num_workers) as p:
-        nodes = list(scraper.get_tree().walk(recursive=True, no_dir=True))
-        hasher = HashComputer(get_hash_function(args.hash_method))
-        for file_node, hash_ in tqdm(p.imap_unordered(hasher, nodes), total=len(nodes)):
-            # image_hashes.append(ImageHash(hash_, file_node))
-            image_hash_dict[hash_].append(file_node.get_path())
+    print(f"Number of Worker: {args.num_workers}")
+    hash_func = get_hash_function(args.hash_method)
+    searcher = DuplicateImageSearcher(args.path, hash_func, args.num_workers)
+    searcher.run()
+    image_hash_dict = searcher.image_hash_dict
     # now each path in image_hash_dict value array are duplicates, what to do with them?
     paths = [[str(p) for p in path_list] for path_list in image_hash_dict.values()]
     num_unique_images = len(paths)
@@ -195,7 +208,7 @@ if __name__ == "__main__":
     output_json_path = Path(args.output_json).absolute() if args.output_json else None
     out_dir = Path(args.output_dir).absolute() if args.output_dir else None
     if args.num_worker == -1:
-        num_worker = max(mp.cpu_count() - 1, 1)
+        num_worker = DEFAULT_NUM_WORKERS
     else:
         num_worker = max(min(args.num_worker, mp.cpu_count()), 1)
 
