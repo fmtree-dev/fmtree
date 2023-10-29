@@ -175,10 +175,17 @@ This is a one-liner bash script that puts all images into an html, but with lots
 for file in $(ls);do echo "<img src=\"./$file\"/>" >> index.html; done
 ```
 
+## Image
 
+### Duplicate Image Search
 
+> This is a module used to detect duplicate images, and optionally export the data, remove duplicates or extract unique images.
 
+The python script is in [./fmtree/image/dup.py](./fmtree/image/dup.py)
 
+#### Usage
 
-
+```bash
+python -m fmtree.image.dup ~/Downloads/images --output_dir ./out --remove_inplace --output_json dup.json -m perceptual-hash
+```
 
