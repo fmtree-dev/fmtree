@@ -196,8 +196,12 @@ class ImageFilter(ExtensionFilter):
         :param mode: whether the filter is IGNORE_MODE or ACCEPT_MODE, defaults to IGNORE_MODE
         :type mode: int, optional
         """
-
-        super(ImageFilter, self).__init__(image_extensions, ignore_list=ignore_list, root_path=root_path, mode=mode)
+        # make both upper and lowercase extensions list
+        new_image_exts = []
+        new_image_exts.extend([ext.upper() for ext in image_extensions])
+        new_image_exts.extend([ext.lower() for ext in image_extensions])
+        new_image_exts = list(set(new_image_exts))
+        super(ImageFilter, self).__init__(new_image_exts, ignore_list=ignore_list, root_path=root_path, mode=mode)
 
     def filter(self, items: List[T]) -> List[T]:
         return super().filter(items)
