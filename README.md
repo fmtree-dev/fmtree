@@ -194,7 +194,7 @@ python -m fmtree.image.dup ~/Downloads/images --output_dir ./out --remove_inplac
 https://fmtree-dev.github.io/fmtree/
 
 ```bash
-sphinx-build -b html docs/source docs 
+sphinx-build -b html docs2/source docs2 
 ```
 
 This command will generate docs in `docs` folder, push it and the content will be deployed to GitHub Pages.
