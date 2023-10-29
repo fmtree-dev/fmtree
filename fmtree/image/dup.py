@@ -79,7 +79,7 @@ def verify_args(args: ArgsConfig):
         raise FileNotFoundError("Target Directory Not Found", args.path)
     if args.path.is_file():
         raise ValueError("Target Path is a File, Expect Directory", args.path)
-    if args.out_dir.exists():
+    if args.out_dir and args.out_dir.exists():
         if args.out_dir.is_file():
             raise ValueError(
                 f"Output path: {args.out_dir} exists and is a file, it should be either a directory or non-existing."
